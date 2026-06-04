@@ -31,4 +31,5 @@ Textové podklady vycházejí ze stránky Kololeč na české Wikipedii. Použit
 ## Obsah webu
 
 Stránka obsahuje také samostatnou sekci Historie s časovou osou vývoje kapličky a přehledem významných rodáků.
+Součástí webu je také `archive.html` s převedeným obsahem starého webu osadního výboru Kololeč.
 # kololec.cz

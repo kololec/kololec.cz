@@ -40,11 +40,12 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
 
 const API_KEY = 'dDHxVzCn8Z61uQlo82IbXW9g6mOZZFErmJjebP-SyQ0';
-const kololec = [50.4783, 13.9758];
+const kololecArea = [50.4747843, 13.9714202];
 const mapElement = document.querySelector('#kololec-map');
+const boundaryUrl = 'https://gis.nature.cz/arcgis/rest/services/Ruian/RuianGeocode/MapServer/3/query?f=geojson&where=KOD%3D769584&outFields=KOD%2CNAZEV&returnGeometry=true&outSR=4326';
 
 if (mapElement && window.L) {
-  const map = L.map(mapElement).setView(kololec, 16);
+  const map = L.map(mapElement).setView(kololecArea, 15);
   const attribution = '<a href="https://api.mapy.com/copyright" target="_blank" rel="noreferrer">&copy; Seznam.cz a.s. a další</a>';
   const createTileLayer = (mapset) => L.tileLayer(`https://api.mapy.com/v1/maptiles/${mapset}/256/{z}/{x}/{y}?apikey=${API_KEY}&lang=cs`, {
     attribution,
@@ -60,6 +61,44 @@ if (mapElement && window.L) {
   };
 
   tileLayers['Turistická'].addTo(map);
-  L.marker(kololec).addTo(map).bindPopup('Kololeč');
   L.control.layers(tileLayers).addTo(map);
+
+  map.createPane('boundary');
+  map.getPane('boundary').style.zIndex = 450;
+
+  fetch(boundaryUrl)
+    .then((response) => response.json())
+    .then((boundary) => {
+      const boundaryBase = L.geoJSON(boundary, {
+        pane: 'boundary',
+        style: {
+          color: '#fff',
+          fill: false,
+          lineCap: 'round',
+          lineJoin: 'round',
+          opacity: 1,
+          weight: 11,
+        },
+      }).addTo(map);
+
+      L.geoJSON(boundary, {
+        pane: 'boundary',
+        style: {
+          color: '#ef1515',
+          fill: false,
+          lineCap: 'round',
+          lineJoin: 'round',
+          opacity: 1,
+          weight: 5,
+        },
+      }).addTo(map);
+
+      map.fitBounds(boundaryBase.getBounds(), {
+        maxZoom: 15,
+        padding: [18, 18],
+      });
+    })
+    .catch(() => {
+      map.setView(kololecArea, 15);
+    });
 }
