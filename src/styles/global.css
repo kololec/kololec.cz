@@ -205,8 +205,19 @@ h3 { font-size: 32px; letter-spacing: -0.04em; }
 .transport-distances strong { color: var(--ink); font-size: 15px; font-weight: 600; }
 .transport-distances span { flex: 0 0 auto; color: var(--forest-soft); font-size: 13px; font-weight: 700; }
 .transport-note { margin: 18px 0 0; padding: 12px 15px; border-left: 3px solid var(--forest); border-radius: 0 8px 8px 0; background: var(--cream); color: #41504a; font-size: 14px; line-height: 1.55; }
-.transport-image { margin: 20px 0 0; overflow: hidden; border-radius: 12px; }
-.transport-image img { display: block; width: 100%; height: auto; transition: transform 500ms ease, filter 500ms ease; }
+.transport-image { margin: 20px 0 0; text-align: center; }
+.transport-image a { display: inline-block; }
+.transport-col { display: flex; flex-direction: column; gap: 14px; }
+.transport-mode--slim { gap: 12px; }
+.transport-taxi-list { display: grid; gap: 0; margin: 0; }
+.transport-taxi-list div { display: flex; justify-content: space-between; gap: 10px; padding: 9px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.transport-taxi-list div:first-child { border-top: 0; padding-top: 0; }
+.transport-taxi-list dt a { font-weight: 700; color: var(--forest); text-decoration: none; }
+.transport-taxi-list dt a:hover { text-decoration: underline; }
+.transport-taxi-list dd { margin: 0; color: var(--muted); text-align: right; }
+.transport-taxi-list a[href^="tel"] { color: var(--forest); font-weight: 700; text-decoration: none; }
+.transport-taxi-list a[href^="tel"]:hover { text-decoration: underline; }
+.transport-image img { display: inline-block; width: 70%; height: auto; border-radius: 12px; transition: transform 500ms ease, filter 500ms ease; }
 .transport-image a:hover img, .transport-image a:focus-visible img { transform: scale(1.04); filter: brightness(0.96); }
 .transport-tickets { margin-top: 30px; padding: 16px 18px; font-size: 15px; }
 .transport-actions { margin-top: 18px; }
@@ -275,6 +286,45 @@ h3 { font-size: 32px; letter-spacing: -0.04em; }
 .contacts-pairs div { display: grid; gap: 3px; }
 .contacts-pairs dt { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--forest-soft); }
 .contacts-pairs dd { margin: 0; font-size: 14px; color: var(--muted); }
+/* Služby v okolí */
+.services-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; margin-top: 36px; }
+.services-card { display: flex; flex-direction: column; gap: 16px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); }
+.services-card-head { display: flex; align-items: center; gap: 12px; }
+.services-card-head h3 { font-size: 20px; }
+.services-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.services-list li { display: flex; flex-direction: column; gap: 2px; padding: 10px 0; border-top: 1px solid var(--line); }
+.services-list li:first-child { border-top: 0; padding-top: 0; }
+.services-item-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 8px; }
+.services-name { font-size: 14px; font-weight: 700; color: var(--forest); text-decoration: none; }
+.services-name:hover { text-decoration: underline; text-underline-offset: 3px; }
+.services-hours { font-size: 12px; font-weight: 600; color: var(--forest-soft); text-align: right; }
+.services-hours--link { color: var(--forest); text-decoration: none; }
+.services-hours--link:hover { text-decoration: underline; }
+.services-note { font-size: 12px; color: var(--muted); }
+.services-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 3px; }
+.services-address { font-size: 12px; color: var(--muted); text-decoration: none; }
+.services-address:hover { color: var(--forest); text-decoration: underline; }
+.services-phone { font-size: 12px; font-weight: 600; color: var(--forest-soft); text-decoration: none; }
+.services-phone:hover { color: var(--forest); }
+.services-footnote { margin: 0; padding: 10px 12px; border-radius: 8px; background: var(--cream); color: var(--muted); font-size: 13px; font-style: italic; }
+.services-more { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
+.services-more p { margin: 0; color: var(--muted); font-size: 14px; }
+
+/* Pro nové obyvatele */
+.newres-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; margin-top: 36px; }
+.newres-card { display: flex; flex-direction: column; gap: 14px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); box-shadow: 0 8px 24px rgba(28,48,33,.05); }
+.newres-card-head { display: flex; align-items: center; gap: 12px; }
+.newres-card-head h3 { font-size: 19px; }
+.newres-text { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+.newres-text a { color: var(--forest); font-weight: 700; text-decoration: none; }
+.newres-text a:hover { text-decoration: underline; }
+.newres-text strong { color: var(--ink); font-weight: 700; }
+.newres-links { display: flex; flex-direction: column; gap: 5px; margin-top: auto; }
+.newres-notice { display: grid; gap: 10px; margin-top: 20px; padding: 20px 24px; border-radius: 14px; background: var(--cream); border: 1px solid var(--line); }
+.newres-notice-item { display: flex; gap: 10px; font-size: 14px; color: var(--muted); line-height: 1.55; }
+.newres-notice-item strong { color: var(--ink); }
+.newres-notice-icon { flex-shrink: 0; font-size: 16px; }
+
 .contacts-secondary-label { margin: 20px 0 14px; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--forest-soft); }
 .contacts-secondary-label small { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--muted); }
 .contacts-secondary-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
@@ -492,8 +542,11 @@ dd { margin: 0; color: #425047; }
   .archive-callout, .practical-callout { grid-template-columns: 1fr; align-items: start; }
   .practical-block-inner { grid-template-columns: 1fr; gap: 22px; }
   .contacts-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .newres-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .contacts-secondary-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .transport-modes { grid-template-columns: 1fr; }
+
   .utility-grid { grid-template-columns: 1fr; }
   .waste-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .landmark-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
@@ -528,6 +581,8 @@ dd { margin: 0; color: #425047; }
   .life-card { min-height: auto; padding: 23px; }
   .life-card span { margin-bottom: 18px; }
   .archive-callout, .practical-callout { padding: 23px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .newres-grid { grid-template-columns: 1fr; }
   .waste-grid { grid-template-columns: 1fr; }
   .practical-list div { grid-template-columns: 1fr; gap: 4px; }
   .provider-table > div { grid-template-columns: 1fr; }

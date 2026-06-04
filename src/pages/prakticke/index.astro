@@ -146,6 +146,140 @@ const utilities = {
   },
 };
 
+// Služby v okolí
+// Ověřeno 4. 6. 2026. hours=null → nezobrazí se, hours='viz web' → odkaz na web
+const services = [
+  {
+    id: 'potraviny',
+    title: 'Potraviny a nákupy',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',
+    items: [
+      { name: 'Pekařství J. J. Šubrtovi', note: 'pekárna, cukrárna, občerstvení', url: 'http://www.pekarstvi-subrtova.cz', hours: 'Po–Pá 7–16:30, So 7–10:30', phone: '+420774820356', address: 'Masarykova 85, Třebenice', mapsUrl: 'https://mapy.com/search?q=Masarykova+85%2C+T%C5%99ebenice' },
+      { name: 'Potraviny večerka', note: 'smíšené zboží', url: 'https://www.mesto-trebenice.cz/vecerka-giang-dang-ha', hours: 'denně 6–20', phone: '+420721729561', address: 'Havlíčkovo nám. 20, Třebenice', mapsUrl: 'https://mapy.com/search?q=Havl%C3%AD%C4%8Dkovo+n%C3%A1m.+20%2C+T%C5%99ebenice' },
+      { name: 'Diamantové zdraví', note: 'zdravá výživa a doplňky', url: 'http://www.diamantovezdravi.cz/', hours: 'Po,St,Čt 8–18 · Út,Pá 8–12 · So 9–11', phone: '+420720509641', address: 'Sokolská 87, Třebenice', mapsUrl: 'https://mapy.com/search?q=Sokolsk%C3%A1+87%2C+T%C5%99ebenice' },
+      { name: 'Železářství A. Vobořilová', note: 'domácí potřeby, instalační materiál', url: 'https://www.mesto-trebenice.cz/zelezarstvi-a-voborilova', hours: 'Po–Pá 8–17, So 8–11', phone: '+420416594533', address: 'Paříkovo nám. 129, Třebenice', mapsUrl: 'https://mapy.com/search?q=Pa%C5%99%C3%ADkovo+n%C3%A1m.+129%2C+T%C5%99ebenice' },
+    ],
+  },
+  {
+    id: 'zdravotnictvi',
+    title: 'Zdravotnictví',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
+    items: [
+      { name: 'MUDr. Alena Lustyková', note: 'praktický lékař pro dospělé', url: 'https://www.curantis.cz/', hours: 'viz web', phone: '+420775588083', address: 'Sokolská 87, Třebenice', mapsUrl: 'https://mapy.com/search?q=Sokolsk%C3%A1+87%2C+T%C5%99ebenice' },
+      { name: 'MUDr. Ivana Turková', note: 'praktický lékař pro děti a dorost', url: 'https://www.mudrturkova.cz/', hours: 'viz web', phone: '+420777276595', address: 'Sokolská 87, Třebenice', mapsUrl: 'https://mapy.com/search?q=Sokolsk%C3%A1+87%2C+T%C5%99ebenice' },
+      { name: 'MUDr. Jan Šváb', note: 'zubní ordinace', url: 'https://www.mesto-trebenice.cz/zubni-ordinace', hours: null, phone: '+420416594588', address: 'Kaplířova 510, Třebenice', mapsUrl: 'https://mapy.com/search?q=Kapl%C3%AD%C5%99ova+510%2C+T%C5%99ebenice' },
+      { name: 'Lékárna Na náměstí', note: 'lékárna', url: 'https://www.mesto-trebenice.cz/lekarna', hours: 'Po–Čt 7:30–16, Pá 7:30–15', phone: '+420416594431', address: 'Masarykova 75, Třebenice', mapsUrl: 'https://mapy.com/search?q=Masarykova+75%2C+T%C5%99ebenice' },
+      { name: 'Veterinární ordinace', note: 'veterinář, léčiva a krmiva', url: 'https://www.mesto-trebenice.cz/veterinarni-ordinace', hours: 'Po–Pá 14–17, So 9–12, Ne 11–12', phone: '+420416594417', address: 'Loucká 450, Třebenice', mapsUrl: 'https://mapy.com/search?q=Louck%C3%A1+450%2C+T%C5%99ebenice' },
+    ],
+  },
+  {
+    id: 'posta',
+    title: 'Pošta a zásilky',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
+    items: [
+      { name: 'Česká pošta Třebenice', note: 'pošta a Balíkovna', url: 'https://www.postaonline.cz/detail-pobocky/-/pobocky/detail/41113', hours: 'Po,St 10–12, 13–18 · Út,Čt,Pá 8–12, 13–16', phone: '+420954241113', address: 'Sokolská 87, Třebenice', mapsUrl: 'https://mapy.com/search?q=Sokolsk%C3%A1+87%2C+T%C5%99ebenice' },
+      { name: 'AlzaBox', note: 'výdejní box', url: 'https://www.alza.cz/alzabox-trebenice-%28posta%29-155088-ps.htm', hours: 'nonstop', phone: null, address: 'Sokolská 87, Třebenice', mapsUrl: 'https://mapy.com/search?q=Sokolsk%C3%A1+87%2C+T%C5%99ebenice' },
+      { name: 'Zásilkovna Z-BOX (Sokolská)', note: 'výdejní box', url: 'https://www.zasilkovna.cz/pobocky/z-box-trebenice-sokolska-87', hours: 'nonstop', phone: null, address: 'Sokolská 87, Třebenice', mapsUrl: 'https://mapy.com/search?q=Sokolsk%C3%A1+87%2C+T%C5%99ebenice' },
+      { name: 'Zásilkovna Z-BOX (Jiráskova)', note: 'výdejní box', url: 'https://www.zasilkovna.cz/pobocky/trebenice-jiraskova', hours: 'nonstop', phone: null, address: 'Jiráskova, Třebenice', mapsUrl: 'https://mapy.com/search?q=Jir%C3%A1skova%2C+T%C5%99ebenice' },
+    ],
+    note: 'Síť výdejních boxů se může měnit – aktuální stav ověřte na webu dopravce.',
+  },
+  {
+    id: 'skola',
+    title: 'Škola a vzdělávání',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
+    items: [
+      { name: 'ZŠ a MŠ Třebenice', note: 'základní a mateřská škola, školní jídelna', url: 'https://www.zstrebenice.cz/', hours: 'sekretariát Po–Pá 8–13', phone: '+420773000260', address: 'Paříkovo nám. 133, Třebenice', mapsUrl: 'https://mapy.com/search?q=Pa%C5%99%C3%ADkovo+n%C3%A1m.+133%2C+T%C5%99ebenice' },
+      { name: 'Infocentrum a knihovna', note: 'knihovna, turistické informace', url: 'https://www.mesto-trebenice.cz/infocentrum-a-knihovna', hours: 'Po,St 7:30–17 · Út,Čt,Pá 7:30–14:30', phone: '+420416594485', address: 'Paříkovo nám. 1, Třebenice', mapsUrl: 'https://mapy.com/search?q=Pa%C5%99%C3%ADkovo+n%C3%A1m.+1%2C+T%C5%99ebenice' },
+    ],
+  },
+  {
+    id: 'doruceni',
+    title: 'Doručení potravin',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v5a2 2 0 0 1-2 2h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M9 3v5H3"/></svg>',
+    items: [
+      { name: 'Rohlik.cz', note: 'online supermarket s rozvozem', url: 'https://www.rohlik.cz/', hours: null, phone: null, address: null, mapsUrl: null },
+      { name: 'Košík.cz', note: 'online supermarket s rozvozem', url: 'https://www.kosik.cz/', hours: null, phone: null, address: null, mapsUrl: null },
+      { name: 'Tesco', note: 'online nákup s rozvozem', url: 'https://www.tesco.cz/', hours: null, phone: null, address: null, mapsUrl: null },
+    ],
+    note: 'Všechny tři služby doručují do Kololeče (PSČ 411 15). Konkrétní termíny a časové sloty si vyberte při objednávce.',
+  },
+  {
+    id: 'restaurace',
+    title: 'Restaurace a občerstvení',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>',
+    items: [
+      { name: 'Čokolaterie Třebenice', note: 'kavárna, čokolaterie, cukrárna', url: 'https://www.cokolaterie-trebenice.cz/', hours: 'Po 11–17:30 · Út–Pá 10:30–17:30 · So–Ne 12:30–17:30', phone: '+420702063628', address: 'Paříkovo náměstí, Třebenice', mapsUrl: 'https://mapy.com/search?q=Pa%C5%99%C3%ADkovo+n%C3%A1m%C4%9Bst%C3%AD%2C+T%C5%99ebenice' },
+      { name: 'Restaurace Radnice', note: 'restaurace', url: 'https://www.facebook.com/p/Restaurace-Radnice-T%C5%99ebenice-100057309646073/', hours: 'Po–Čt,Ne 10–23 · Pá–So 10–1', phone: '+420605747175', address: 'Paříkovo nám. 1, Třebenice', mapsUrl: 'https://mapy.com/search?q=Pa%C5%99%C3%ADkovo+n%C3%A1m.+1%2C+T%C5%99ebenice' },
+      { name: 'Hostinec U Havlů', note: 'restaurace a ubytování', url: 'https://www.penzionuhavlu.cz/', hours: 'Po–Čt,Ne 10:30–22 · Pá–So 10:30–24', phone: '+420605222133', address: 'Zimmerova 261, Třebenice', mapsUrl: 'https://mapy.com/search?q=Zimmerova+261%2C+T%C5%99ebenice' },
+      { name: 'Penzion a restaurace Kocourov', note: 'restaurace a penzion', url: 'https://www.kocourov.cz/restaurace', hours: 'Po–Čt 11:30–22 · Pá–So 11:30–23:30 · Ne 11:30–21', phone: '+420416597060', address: 'Kocourov 2', mapsUrl: 'https://mapy.com/search?q=Kocourov+2%2C+T%C5%99ebenice' },
+    ],
+  },
+];
+
+// Pro nové obyvatele a majitele nemovitostí
+const newResidents = [
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+    title: 'Katastr nemovitostí',
+    text: 'Kololeč má vlastní katastrální území s kódem <strong>769584</strong>. Příslušné katastrální pracoviště je v Litoměřicích (Žitenická 1218/3, tel. <a href="tel:+420416575300">416 575 300</a>).',
+    links: [
+      { label: 'Nahlížení do katastru (ČÚZK)', href: 'https://nahlizenidokn.cuzk.gov.cz/' },
+      { label: 'Geoportál ČÚZK', href: 'https://geoportal.cuzk.cz/' },
+      { label: 'Detail k. ú. Kololeč', href: 'https://cuzk.gov.cz/Dokument.aspx?AKCE=META:SESTAVA:MDR002_XSLT:WEBCUZK_ID:769584' },
+    ],
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>',
+    title: 'Územní plán',
+    text: 'Pro Kololeč platí <strong>územní plán Třebenice</strong> (účinný od 2. 1. 2024). Před koupí pozemku, výstavbou nebo rekonstrukcí ověřte konkrétní parcelu v územním plánu – funkční využití, zastavitelnost a regulativy se liší parcelou od parcely.',
+    links: [
+      { label: 'Územní plán Třebenice', href: 'https://www.meulovo.cz/uzemni-plan-trebenice' },
+    ],
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.5 8.5a2.12 2.12 0 0 1-3-3L12 9"/><path d="M17.64 15 22 10.64"/><path d="m20.91 11.7-1.25-1.25c-.6-.6-.93-1.4-.93-2.25v-.86L16.01 4.6a5.56 5.56 0 0 0-3.94-1.64H9l.92.82A6.18 6.18 0 0 1 12 8.4v1.56l2 2h2.47l2.26 1.91"/></svg>',
+    title: 'Stavební úřad',
+    text: 'Stavební záležitosti (povolení, kolaudace, dělení pozemků…) řeší <strong>Odbor stavebního úřadu MěÚ Lovosice</strong>, Školní 407/2. Tel. <a href="tel:+420416571271">416 571 271</a>. Podání lze podávat elektronicky přes Portál stavebníka.',
+    links: [
+      { label: 'Stavební úřad Lovosice', href: 'https://www.meulovo.cz/stavebni-urad-a-uzemni-planovani' },
+      { label: 'Portál stavebníka', href: 'https://www.stavebnionline.cz/' },
+    ],
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+    title: 'Trvalý pobyt',
+    text: 'Změnu trvalého pobytu vyřídíte osobně na <strong>MěÚ Třebenice</strong>. Přineste občanský průkaz a doklad o vlastnictví nebo souhlasu vlastníka. Poplatek 50 Kč (děti do 15 let zdarma). Po změně požádejte o nový občanský průkaz.',
+    links: [
+      { label: 'Matrika a evidence obyvatel', href: 'https://www.mesto-trebenice.cz/matrika-evidence-obyvatel' },
+    ],
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6.5 12h.01M17.5 12h.01"/></svg>',
+    title: 'Místní poplatky',
+    text: '<strong>Odpad:</strong> 1 000 Kč/rok, splatnost do 30. dubna. Platí i pro vlastníky domů bez přihlášené osoby. <strong>Psi:</strong> 300 Kč/rok za prvního psa v rodinném domě (různé sazby dle situace). Platba na pokladně MěÚ nebo převodem na účet 19-6122471/0100.',
+    links: [
+      { label: 'Poplatek za odpad', href: 'https://www.mesto-trebenice.cz/mistni-poplatek-za-odpad' },
+      { label: 'Poplatek ze psů', href: 'https://www.mesto-trebenice.cz/mistni-poplatek-ze-psu' },
+      { label: 'Formuláře a tiskopisy', href: 'https://www.mesto-trebenice.cz/formulare-a-tiskopisy' },
+    ],
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10M12 12l4 4M12 12l-4 4"/><circle cx="12" cy="19" r="3"/></svg>',
+    title: 'Daň z nemovitostí',
+    text: 'Po koupi nemovitosti podejte <strong>přiznání k dani z nemovitých věcí</strong> do 31. ledna následujícího roku. Přiznání se nepodává každý rok – jen při změně (koupě, přístavba, změna využití…). Přiznání lze podat elektronicky přes Moje daně.',
+    links: [
+      { label: 'Moje daně – Finanční správa', href: 'https://www.financnisprava.cz/cs/elektronicke-sluzby/moje-dane' },
+    ],
+  },
+];
+
+const newResidentsNotice = [
+  { icon: '💧', text: '<strong>Voda:</strong> Kololeč je zásobována z vodovodu Lovosice (provozovatel SčVK). Způsob odvádění odpadních vod a možnost napojení na kanalizaci ověřte pro konkrétní nemovitost individuálně.' },
+  { icon: '🌿', text: '<strong>CHKO České středohoří:</strong> Část katastrálního území Kololeče zasahuje do CHKO. Před výstavbou nebo úpravami ověřte, zda se omezení vztahují na vaši parcelu.' },
+  { icon: '⚡', text: '<strong>Ostatní sítě:</strong> Dostupnost elektrické přípojky, internetu a zemního plynu ověřte pro konkrétní adresu nebo parcelu.' },
+];
+
 // Úřady a důležité kontakty
 const emergency = [
   { number: '112', label: 'Tísňové volání (EU)', note: 'jakákoli akutní nouzová situace' },
@@ -201,17 +335,7 @@ const practicalSections = [
   {
     id: 'sluzby',
     title: 'Služby v okolí',
-    intro: 'Základní služby jsou dostupné především v nedalekých Třebenicích.',
-    items: [
-      ['Obchod', placeholder],
-      ['Lékárna', placeholder],
-      ['Lékař', placeholder],
-      ['Pošta', placeholder],
-      ['Školy', placeholder],
-      ['Restaurace', placeholder],
-      ['Výdejní boxy', placeholder],
-      ['Sběrný dvůr', placeholder],
-    ],
+    intro: 'Základní služby jsou dostupné především v sousedních Třebenicích, přibližně 1 km od Kololeče. Otevírací doby ověřte vždy na webu konkrétního provozovatele.',
   },
   {
     id: 'urady',
@@ -221,20 +345,7 @@ const practicalSections = [
   {
     id: 'novi-obyvatele',
     title: 'Pro nové obyvatele a majitele nemovitostí',
-    intro: 'Základní orientace pro nové sousedy, vlastníky domů a pozemků.',
-    items: [
-      ['Katastrální mapa', 'Nahlížení do katastru nemovitostí pro katastrální území Kololeč.'],
-      ['Kód katastrálního území', '769584'],
-      ['Územní plán', placeholder],
-      ['Stavební úřad', placeholder],
-      ['Trvalý pobyt', placeholder],
-      ['Místní poplatky', placeholder],
-      ['Odpadové hospodářství', placeholder],
-    ],
-    actions: [
-      { label: 'Otevřít katastrální mapu', href: 'https://sgi-nahlizenidokn.cuzk.gov.cz/marushka/default.aspx?themeid=3&MarQueryId=6D2BCEB5&MarQParamCount=1&MarQParam0=769584&MarWindowName=Marushka' },
-      { label: 'Otevřít web města', href: 'https://www.mesto-trebenice.cz/' },
-    ],
+    intro: 'Základní orientace pro nové sousedy a vlastníky domů nebo pozemků v Kololeči.',
   },
 ];
 ---
@@ -306,36 +417,52 @@ const practicalSections = [
                     </ul>
                   </article>
 
-                  <article class="transport-mode">
-                    <div class="transport-mode-head">
-                      <span class="transport-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="13" rx="3"/><path d="M5 10h14"/><path d="M9 16l-2 4M15 16l2 4"/><circle cx="9" cy="13" r="0.9"/><circle cx="15" cy="13" r="0.9"/></svg>
-                      </span>
-                      <h3>Vlakem</h3>
-                    </div>
-                    <ul class="transport-stops">
-                      {transport.train.map((stop) => (
-                        <li>
-                          <div class="transport-stop-main">
-                            <strong>{stop.name}</strong>
-                            <span class="transport-dist">{stop.distance}</span>
-                          </div>
-                          <p class="transport-dest" set:html={stop.destinations}></p>
-                          <span class="transport-links">
-                            {stop.departures
-                              ? <a class="transport-link" href={stop.departures} target="_blank" rel="noreferrer">Odjezdy →</a>
-                              : <span class="transport-soon">Odjezdy doplníme</span>}
-                            {stop.timetable && <a class="transport-link" href={stop.timetable} target="_blank" rel="noreferrer">Jízdní řád →</a>}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                    <figure class="transport-image">
-                      <a href="https://www.svestkovadraha.cz/historie" target="_blank" rel="noreferrer">
-                        <img src="/assets/svestkova-draha.png" alt="Motorový vůz na Švestkové dráze" loading="lazy" />
-                      </a>
-                    </figure>
-                  </article>
+                  <div class="transport-col">
+                    <article class="transport-mode">
+                      <div class="transport-mode-head">
+                        <span class="transport-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="13" rx="3"/><path d="M5 10h14"/><path d="M9 16l-2 4M15 16l2 4"/><circle cx="9" cy="13" r="0.9"/><circle cx="15" cy="13" r="0.9"/></svg>
+                        </span>
+                        <h3>Vlakem</h3>
+                      </div>
+                      <ul class="transport-stops">
+                        {transport.train.map((stop) => (
+                          <li>
+                            <div class="transport-stop-main">
+                              <strong>{stop.name}</strong>
+                              <span class="transport-dist">{stop.distance}</span>
+                            </div>
+                            <p class="transport-dest" set:html={stop.destinations}></p>
+                            <span class="transport-links">
+                              {stop.departures
+                                ? <a class="transport-link" href={stop.departures} target="_blank" rel="noreferrer">Odjezdy →</a>
+                                : <span class="transport-soon">Odjezdy doplníme</span>}
+                              {stop.timetable && <a class="transport-link" href={stop.timetable} target="_blank" rel="noreferrer">Jízdní řád →</a>}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                      <figure class="transport-image">
+                        <a href="https://www.svestkovadraha.cz/historie" target="_blank" rel="noreferrer">
+                          <img src="/assets/svestkova-draha.png" alt="Motorový vůz na Švestkové dráze" loading="lazy" />
+                        </a>
+                      </figure>
+                    </article>
+
+                    <article class="transport-mode transport-mode--slim">
+                      <div class="transport-mode-head">
+                        <span class="transport-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </span>
+                        <h3>Taxi</h3>
+                      </div>
+                      <dl class="transport-taxi-list">
+                        <div><dt><a href="https://lamataxi.cz/" target="_blank" rel="noreferrer">LAMA Taxi</a></dt><dd><a href="tel:+420606043400">606 043 400</a> · Lovosice</dd></div>
+                        <div><dt>Uber</dt><dd><a href="https://www.uber.com/" target="_blank" rel="noreferrer">mobilní aplikace</a></dd></div>
+                        <div><dt>Bolt</dt><dd><a href="https://bolt.eu/cs-cz/" target="_blank" rel="noreferrer">mobilní aplikace</a>, omezená dostupnost</dd></div>
+                      </dl>
+                    </article>
+                  </div>
 
                   <article class="transport-mode">
                     <div class="transport-mode-head">
@@ -498,6 +625,91 @@ const practicalSections = [
                       ))}
                     </div>
                   </article>
+                </div>
+              </div>
+            </section>
+          );
+        }
+
+        if (section.id === 'sluzby') {
+          return (
+            <section class="practical-block practical-block--wide" id={section.id} aria-labelledby={`${section.id}-title`}>
+              <div class="shell">
+                <div class="practical-block-head">
+                  <p class="section-kicker">{num}</p>
+                  <h2 id={`${section.id}-title`}>{section.title}</h2>
+                  <p>{section.intro}</p>
+                </div>
+
+                <div class="services-grid">
+                  {services.map((cat) => (
+                    <article class="services-card">
+                      <div class="services-card-head">
+                        <span class="utility-icon" aria-hidden="true" set:html={cat.icon}></span>
+                        <h3>{cat.title}</h3>
+                      </div>
+                      <ul class="services-list">
+                        {cat.items.map((item) => (
+                          <li>
+                            <div class="services-item-head">
+                              <a href={item.url} target="_blank" rel="noreferrer" class="services-name">{item.name}</a>
+                              {item.hours === 'viz web'
+                                ? <a href={item.url} target="_blank" rel="noreferrer" class="services-hours services-hours--link">ordinační hodiny →</a>
+                                : item.hours && <span class="services-hours">{item.hours}</span>}
+                            </div>
+                            <span class="services-note">{item.note}</span>
+                            <div class="services-meta">
+                              {item.address && <a href={item.mapsUrl} target="_blank" rel="noreferrer" class="services-address">{item.address}</a>}
+                              {item.phone && <a href={`tel:${item.phone}`} class="services-phone">{item.phone.replace('+420', '').replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3').trim()}</a>}
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                      {cat.note && <p class="services-footnote">{cat.note}</p>}
+                    </article>
+                  ))}
+                </div>
+
+                <div class="services-more">
+                  <p>Kompletní přehled provozoven, řemeslníků a dalších služeb:</p>
+                  <a class="button button-outline practical-button" href="https://www.mesto-trebenice.cz/podnikatele-a-firmy" target="_blank" rel="noreferrer">Adresář podnikatelů (Třebenice) →</a>
+                </div>
+              </div>
+            </section>
+          );
+        }
+
+        if (section.id === 'novi-obyvatele') {
+          return (
+            <section class="practical-block practical-block--wide" id={section.id} aria-labelledby={`${section.id}-title`}>
+              <div class="shell">
+                <div class="practical-block-head">
+                  <p class="section-kicker">{num}</p>
+                  <h2 id={`${section.id}-title`}>{section.title}</h2>
+                  <p>{section.intro}</p>
+                </div>
+
+                <div class="newres-grid">
+                  {newResidents.map((card) => (
+                    <article class="newres-card">
+                      <div class="newres-card-head">
+                        <span class="utility-icon" aria-hidden="true" set:html={card.icon}></span>
+                        <h3>{card.title}</h3>
+                      </div>
+                      <p class="newres-text" set:html={card.text}></p>
+                      <div class="newres-links">
+                        {card.links.map((l) => (
+                          <a href={l.href} target="_blank" rel="noreferrer" class="waste-link">{l.label} →</a>
+                        ))}
+                      </div>
+                    </article>
+                  ))}
+                </div>
+
+                <div class="newres-notice">
+                  {newResidentsNotice.map((n) => (
+                    <div class="newres-notice-item" set:html={`<span class="newres-notice-icon">${n.icon}</span><span>${n.text}</span>`}></div>
+                  ))}
                 </div>
               </div>
             </section>
