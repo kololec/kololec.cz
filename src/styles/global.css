@@ -227,6 +227,55 @@ h3 { font-size: 32px; letter-spacing: -0.04em; }
 .utility-price-note a { color: var(--forest); font-weight: 700; text-decoration: none; }
 .utility-note { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
 
+/* Úřady a důležité kontakty */
+.emergency-strip { margin-top: 28px; padding: 20px 24px; border-radius: 14px; background: var(--forest-deep); color: #fff; }
+.emergency-strip-label { margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+.emergency-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.emergency-number { display: inline-flex; flex-direction: column; align-items: center; padding: 10px 18px; border-radius: 12px; background: rgba(255,255,255,0.1); color: #fff; text-decoration: none; transition: background 160ms ease; }
+.emergency-number:hover { background: rgba(255,255,255,0.2); }
+.emergency-number strong { font-family: "Fraunces", Georgia, serif; font-size: 26px; letter-spacing: -0.02em; line-height: 1; }
+.emergency-number span { margin-top: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.75; }
+.contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; align-items: start; }
+.contacts-col { display: grid; gap: 14px; }
+.contacts-card { display: flex; flex-direction: column; gap: 14px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); box-shadow: 0 12px 30px rgba(28,48,33,.05); }
+.contacts-card--main { background: var(--paper); }
+.contacts-card-head { display: flex; align-items: center; gap: 12px; }
+.contacts-card-head h3 { font-size: 20px; }
+.contacts-address { margin: 0; color: var(--muted); font-size: 14px; }
+.contacts-row { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; }
+.contacts-phone { font-family: "Fraunces", Georgia, serif; font-size: 22px; color: var(--forest-deep); text-decoration: none; letter-spacing: -0.01em; }
+.contacts-phone:hover { color: var(--forest); }
+.contacts-email { color: var(--forest); font-size: 13px; font-weight: 700; text-decoration: none; word-break: break-all; }
+.contacts-meta { display: flex; flex-wrap: wrap; gap: 6px 20px; margin: 0; }
+.contacts-meta div { display: flex; gap: 6px; align-items: baseline; }
+.contacts-meta dt { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.contacts-meta dd { margin: 0; font-size: 13px; font-weight: 700; font-family: monospace; letter-spacing: 0.04em; color: var(--ink); }
+.contacts-hours { padding: 14px 16px; border-radius: 10px; background: var(--cream); }
+.contacts-hours-label { margin: 0 0 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--forest-soft); }
+.contacts-hours-table { border-collapse: collapse; width: 100%; font-size: 14px; }
+.contacts-hours-table td { padding: 5px 0; }
+.contacts-hours-table td:first-child { font-weight: 700; color: var(--forest-deep); width: 70px; }
+.contacts-hours-table td:last-child { color: var(--muted); }
+.contacts-pairs { display: grid; gap: 12px; margin: 0; }
+.contacts-pairs div { display: grid; gap: 3px; }
+.contacts-pairs dt { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--forest-soft); }
+.contacts-pairs dd { margin: 0; font-size: 14px; color: var(--muted); }
+.contacts-pairs a { color: var(--forest); font-weight: 700; text-decoration: none; }
+.contacts-specialists { margin-top: 20px; padding: 22px 24px; border: 1px solid var(--line); border-radius: 14px; background: var(--cream); }
+.contacts-specialists-label { margin: 0 0 16px; font-size: 13px; font-weight: 700; color: var(--forest-deep); }
+.contacts-specialists-label small { font-weight: 400; color: var(--muted); }
+.specialists-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.specialists-list li { display: grid; grid-template-columns: minmax(190px,.46fr) minmax(150px,.38fr) 1fr; gap: 12px; align-items: baseline; padding: 11px 0; border-top: 1px solid var(--line); }
+.specialist-role { font-size: 13px; font-weight: 700; color: var(--ink); }
+.specialist-name { font-size: 13px; color: var(--muted); }
+.specialist-contacts { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; }
+.specialist-contacts a { color: var(--forest); text-decoration: none; font-weight: 600; }
+.specialist-more { color: var(--forest-soft) !important; font-weight: 400 !important; }
+.contacts-orp { margin-top: 14px; padding: 20px 24px; border-radius: 14px; background: var(--cream); border: 1px solid var(--line); }
+.contacts-orp h3 { font-size: 18px; margin-bottom: 10px; }
+.contacts-orp p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.contacts-orp a { color: var(--forest); font-weight: 700; text-decoration: none; }
+
 /* Odpady – karty podle druhu odpadu */
 .waste-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 36px; }
 .waste-card { display: flex; flex-direction: column; padding: 26px 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); box-shadow: 0 12px 30px rgba(28, 48, 33, 0.05); }
@@ -428,6 +477,8 @@ dd { margin: 0; color: #425047; }
   .life-grid, .archive-preview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .archive-callout, .practical-callout { grid-template-columns: 1fr; align-items: start; }
   .practical-block-inner { grid-template-columns: 1fr; gap: 22px; }
+  .contacts-grid { grid-template-columns: 1fr; }
+  .specialists-list li { grid-template-columns: 1fr; gap: 4px; }
   .transport-modes { grid-template-columns: 1fr; }
   .utility-grid { grid-template-columns: 1fr; }
   .waste-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

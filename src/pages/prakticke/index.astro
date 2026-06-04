@@ -146,6 +146,30 @@ const utilities = {
   },
 };
 
+// Úřady a důležité kontakty
+const emergency = [
+  { number: '112', label: 'Tísňové volání (EU)', note: 'jakákoli akutní nouzová situace' },
+  { number: '155', label: 'Záchranná služba', note: 'akutní ohrožení života nebo zdraví' },
+  { number: '158', label: 'Policie ČR', note: 'akutní bezpečnostní situace' },
+  { number: '150', label: 'Hasiči', note: 'požár, nehoda, technický zásah' },
+  { number: '156', label: 'Městská policie', note: 'obecná tísňová linka MP' },
+];
+
+const officeHours = [
+  { day: 'Pondělí', hours: '07:30–11:30 a 12:30–17:00' },
+  { day: 'Středa',  hours: '07:30–11:30 a 12:30–17:00' },
+  { day: 'Pátek',   hours: '07:30–11:30 a 12:30–14:00' },
+  { day: 'Út, Čt',  hours: 'neúřední dny' },
+];
+
+// Specializované kontakty – ověřeno 4. 6. 2026; osoby se mohou měnit
+const specialists = [
+  { role: 'Matrika a evidence obyvatel', name: 'Petra Vaňková, DiS.', phone: '416 594 509', mobile: '601 532 208', email: 'matrika@mesto-trebenice.cz', url: 'https://www.mesto-trebenice.cz/matrika-evidence-obyvatel' },
+  { role: 'Stavební a dopravní agenda', name: 'Tereza Kučerová', phone: '416 594 311', mobile: '602 692 960', email: 'kucerova@mesto-trebenice.cz', url: 'https://www.mesto-trebenice.cz/referent-dotaci-stavebni-a-dopravni-cinnosti' },
+  { role: 'Životní prostředí a odpady', name: 'Ing. Lenka Jáhenová', phone: '416 594 301', mobile: '601 558 090', email: 'jahenova@mesto-trebenice.cz', url: 'https://www.mesto-trebenice.cz/referent-zivotniho-prostredi' },
+  { role: 'Technická správa majetku', name: 'Ing. Jiří Žalovič', mobile: '606 054 303', email: 'zalovic@mesto-trebenice.cz', url: 'https://www.mesto-trebenice.cz/technik-spravy-majetku-mesta' },
+];
+
 const practicalSections = [
   {
     id: 'doprava',
@@ -192,18 +216,7 @@ const practicalSections = [
   {
     id: 'urady',
     title: 'Úřady a důležité kontakty',
-    intro: 'Odkazy na správu města, hlášení závad a krizové kontakty.',
-    items: [
-      ['Městský úřad Třebenice', 'Oficiální web města Třebenice.'],
-      ['Osadní výbor Kololeč', placeholder],
-      ['Úřední deska', placeholder],
-      ['Hlášení závad', placeholder],
-      ['Krizová telefonní čísla', '112 · jednotné evropské číslo tísňového volání'],
-    ],
-    actions: [
-      { label: 'Otevřít web města', href: 'https://www.mesto-trebenice.cz/' },
-      { label: 'Zobrazit úřední desku', href: null },
-    ],
+    intro: 'Kontakt na Městský úřad Třebenice, hlášení závad, Czech POINT, Městská policie Třebenice a tísňové linky.',
   },
   {
     id: 'novi-obyvatele',
@@ -407,7 +420,7 @@ const practicalSections = [
                   <article class="utility-card">
                     <div class="utility-card-head">
                       <span class="utility-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.5 2 4 7 4 10c0 4 3.6 8 8 8s8-4 8-8c0-3-2.5-8-8-8z"/><path d="M12 18v4M8 22h8"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 C12 2 5 10 5 15a7 7 0 0 0 14 0C19 10 12 2 12 2z"/></svg>
                       </span>
                       <h3>Voda</h3>
                     </div>
@@ -486,6 +499,153 @@ const practicalSections = [
                     </div>
                   </article>
                 </div>
+              </div>
+            </section>
+          );
+        }
+
+        if (section.id === 'urady') {
+          return (
+            <section class="practical-block practical-block--wide" id={section.id} aria-labelledby={`${section.id}-title`}>
+              <div class="shell">
+                <div class="practical-block-head">
+                  <p class="section-kicker">{num}</p>
+                  <h2 id={`${section.id}-title`}>{section.title}</h2>
+                  <p>{section.intro}</p>
+                </div>
+
+                {/* Tísňové linky */}
+                <div class="emergency-strip">
+                  <p class="emergency-strip-label">Tísňové linky</p>
+                  <ul class="emergency-list">
+                    {emergency.map((e) => (
+                      <li>
+                        <a href={`tel:${e.number}`} class="emergency-number">
+                          <strong>{e.number}</strong>
+                          <span>{e.label}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Hlavní karty */}
+                <div class="contacts-grid">
+                  {/* MěÚ Třebenice */}
+                  <article class="contacts-card contacts-card--main">
+                    <div class="contacts-card-head">
+                      <span class="utility-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-5 9 5v12"/><path d="M3 21h18"/><path d="M9 21v-6h6v6"/></svg>
+                      </span>
+                      <h3>Městský úřad Třebenice</h3>
+                    </div>
+                    <p class="contacts-address">Paříkovo nám. 1, 411 13 Třebenice</p>
+                    <div class="contacts-row">
+                      <a href="tel:+420416594301" class="contacts-phone">416 594 301</a>
+                      <a href="mailto:podatelna@mesto-trebenice.cz" class="contacts-email">podatelna@mesto-trebenice.cz</a>
+                    </div>
+                    <dl class="contacts-meta">
+                      <div><dt>Datová schránka</dt><dd>445bayh</dd></div>
+                      <div><dt>IČO</dt><dd>00264521</dd></div>
+                    </dl>
+                    <div class="contacts-hours">
+                      <p class="contacts-hours-label">Úřední hodiny</p>
+                      <table class="contacts-hours-table">
+                        {officeHours.map((row) => (
+                          <tr>
+                            <td>{row.day}</td>
+                            <td>{row.hours}</td>
+                          </tr>
+                        ))}
+                      </table>
+                    </div>
+                    <div class="utility-links">
+                      <a href="https://www.mesto-trebenice.cz/oficialni-kontakt" target="_blank" rel="noreferrer" class="utility-link">Kontaktní stránka →</a>
+                      <a href="https://www.mesto-trebenice.cz/uredni-deska" target="_blank" rel="noreferrer" class="utility-link">Úřední deska →</a>
+                      <a href="https://www.mesto-trebenice.cz/zpravy-z-meu" target="_blank" rel="noreferrer" class="utility-link">Zprávy z MěÚ →</a>
+                      <a href="https://www.mesto-trebenice.cz/formulare-a-tiskopisy" target="_blank" rel="noreferrer" class="utility-link">Formuláře a tiskopisy →</a>
+                    </div>
+                  </article>
+
+                  {/* Pravý sloupec */}
+                  <div class="contacts-col">
+
+                    {/* Czech POINT */}
+                    <article class="contacts-card">
+                      <div class="contacts-card-head">
+                        <span class="utility-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M7 15h.01M11 15h2"/></svg>
+                        </span>
+                        <h3>Czech POINT</h3>
+                      </div>
+                      <p class="utility-note">Výpisy z rejstříků (trestů, katastru, obchodního, živnostenského a dalších), ověřování podpisů a kopií, autorizovaná konverze, agenda datových schránek. Dostupné na podatelně MěÚ Třebenice.</p>
+                      <a href="https://www.mesto-trebenice.cz/podatelna-a-spisovna" target="_blank" rel="noreferrer" class="utility-link" style="margin-top: 12px; display: inline-block;">Podatelna a Czech POINT →</a>
+                    </article>
+
+                    {/* Hlášení závad */}
+                    <article class="contacts-card">
+                      <div class="contacts-card-head">
+                        <span class="utility-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </span>
+                        <h3>Hlášení závad a odběr hlášení</h3>
+                      </div>
+                      <p class="utility-note">Závady veřejného osvětlení, poškozený mobiliář, komunikace nebo jiný problém ve veřejném prostoru hlaste přes <strong>ÚŘAD v MOBILU</strong>. Stejnou aplikací se lze přihlásit k odběru SMS nebo e-mailových hlášení města.</p>
+                      <div class="utility-links" style="margin-top: 12px;">
+                        <a href="https://mesto-trebenice.uradvmobilu.cz/default/issues" target="_blank" rel="noreferrer" class="utility-link">Nahlásit závadu →</a>
+                        <a href="https://mesto-trebenice.uradvmobilu.cz/default/intro" target="_blank" rel="noreferrer" class="utility-link">Odběr hlášení města →</a>
+                      </div>
+                    </article>
+
+                    {/* Policie */}
+                    <article class="contacts-card">
+                      <div class="contacts-card-head">
+                        <span class="utility-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </span>
+                        <h3>Městská policie Třebenice</h3>
+                      </div>
+                      <p class="contacts-address">Paříkovo nám. 1, 411 13 Třebenice</p>
+                      <div class="contacts-row">
+                        <a href="tel:+420602286168" class="contacts-phone">602 286 168</a>
+                        <a href="mailto:m.policie@mesto-trebenice.cz" class="contacts-email">m.policie@mesto-trebenice.cz</a>
+                      </div>
+                      <p class="utility-note">Při akutním ohrožení volejte <strong>158</strong> nebo <strong>112</strong>.</p>
+                      <a href="https://www.mesto-trebenice.cz/mestska-policie-1" target="_blank" rel="noreferrer" class="utility-link" style="margin-top: 4px; display: inline-block;">Stránka MP →</a>
+                    </article>
+
+                  </div>
+                </div>
+
+                {/* Specializované kontakty */}
+                <div class="contacts-specialists">
+                  <p class="contacts-specialists-label">Specializované kontakty MěÚ <small>(ověřeno červen 2026)</small></p>
+                  <ul class="specialists-list">
+                    {specialists.map((s) => (
+                      <li>
+                        <span class="specialist-role">{s.role}</span>
+                        <span class="specialist-name">{s.name}</span>
+                        <span class="specialist-contacts">
+                          {s.phone && <a href={`tel:+420${s.phone.replace(/ /g,'')}`}>{s.phone}</a>}
+                          {s.mobile && <a href={`tel:+420${s.mobile.replace(/ /g,'')}`}>{s.mobile}</a>}
+                          <a href={`mailto:${s.email}`}>{s.email}</a>
+                          <a href={s.url} target="_blank" rel="noreferrer" class="specialist-more">Více →</a>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* MěÚ Lovosice */}
+                <div class="contacts-orp">
+                  <h3>MěÚ Lovosice — obec s rozšířenou působností</h3>
+                  <p>Pro agendy s rozšířenou působností (např. stavební úřad, registr vozidel) je příslušný <strong>Městský úřad Lovosice</strong>, Školní 407/2, 410 02 Lovosice. Tel.: <a href="tel:+420416571111">416 571 111</a>.</p>
+                  <div class="utility-links" style="margin-top: 10px;">
+                    <a href="https://www.meulovo.cz/podrobny-kontakt" target="_blank" rel="noreferrer" class="utility-link">Kontakt →</a>
+                    <a href="https://www.meulovo.cz/stavebni-urad-a-uzemni-planovani" target="_blank" rel="noreferrer" class="utility-link">Stavební úřad →</a>
+                  </div>
+                </div>
+
               </div>
             </section>
           );
