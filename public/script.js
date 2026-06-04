@@ -46,6 +46,138 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
 
+const imagePattern = /\.(avif|gif|jpe?g|png|webp)(\?.*)?$/i;
+const lightboxKeys = [];
+const lightboxItems = [];
+const getLightboxGroup = (element) => {
+  const section = element.closest('.archive-entry[id], section[id], article[id], main[id]');
+  if (section?.id) return section.id;
+  return window.location.pathname;
+};
+const registerLightboxItem = ({ trigger, src, caption, group }) => {
+  const key = `${group}:${src}`;
+  if (!src || lightboxKeys.includes(key)) return;
+  lightboxKeys.push(key);
+  lightboxItems.push({ trigger, src, caption, group });
+};
+
+document.querySelectorAll('a[href]').forEach((link) => {
+  const href = link.getAttribute('href');
+  if (!href || !imagePattern.test(href)) return;
+
+  const image = link.querySelector('img');
+  if (!image) return;
+
+  registerLightboxItem({
+    trigger: link,
+    src: link.href,
+    caption: image.alt || link.title || link.querySelector('span')?.textContent?.trim() || '',
+    group: getLightboxGroup(link),
+  });
+});
+
+document.querySelectorAll('.archive-body img, .post-shell .archive-body img').forEach((image) => {
+  if (image.closest('a[href]')) return;
+
+  registerLightboxItem({
+    trigger: image,
+    src: image.currentSrc || image.src,
+    caption: image.alt || image.title || '',
+    group: getLightboxGroup(image),
+  });
+});
+
+if (lightboxItems.length) {
+  let activeLightboxGroup = [];
+  let activeLightboxIndex = 0;
+
+  const lightbox = document.createElement('div');
+  lightbox.className = 'lightbox';
+  lightbox.setAttribute('role', 'dialog');
+  lightbox.setAttribute('aria-modal', 'true');
+  lightbox.setAttribute('aria-label', 'Prohlížeč obrázků');
+  lightbox.innerHTML = `
+    <button class="lightbox-button lightbox-close" type="button" aria-label="Zavřít prohlížeč">×</button>
+    <button class="lightbox-button lightbox-prev" type="button" aria-label="Předchozí obrázek">‹</button>
+    <figure class="lightbox-figure">
+      <img class="lightbox-image" alt="" />
+      <figcaption class="lightbox-caption"></figcaption>
+    </figure>
+    <button class="lightbox-button lightbox-next" type="button" aria-label="Další obrázek">›</button>
+  `;
+  document.body.append(lightbox);
+
+  const lightboxImage = lightbox.querySelector('.lightbox-image');
+  const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+  const closeButton = lightbox.querySelector('.lightbox-close');
+  const prevButton = lightbox.querySelector('.lightbox-prev');
+  const nextButton = lightbox.querySelector('.lightbox-next');
+
+  const renderLightbox = () => {
+    const item = activeLightboxGroup[activeLightboxIndex];
+    lightboxImage.src = item.src;
+    lightboxImage.alt = item.caption;
+    lightboxCaption.textContent = item.caption;
+    lightboxCaption.hidden = !item.caption;
+    prevButton.disabled = activeLightboxGroup.length < 2;
+    nextButton.disabled = activeLightboxGroup.length < 2;
+  };
+
+  const openLightbox = (item) => {
+    activeLightboxGroup = lightboxItems.filter((candidate) => candidate.group === item.group);
+    activeLightboxIndex = activeLightboxGroup.indexOf(item);
+    renderLightbox();
+    lightbox.classList.add('open');
+    document.body.classList.add('lightbox-open');
+    closeButton.focus();
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('open');
+    document.body.classList.remove('lightbox-open');
+    activeLightboxGroup[activeLightboxIndex]?.trigger?.focus?.();
+  };
+
+  const moveLightbox = (direction) => {
+    if (activeLightboxGroup.length < 2) return;
+    activeLightboxIndex = (activeLightboxIndex + direction + activeLightboxGroup.length) % activeLightboxGroup.length;
+    renderLightbox();
+  };
+
+  lightboxItems.forEach((item) => {
+    item.trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      openLightbox(item);
+    });
+
+    if (!item.trigger.matches('a, button, input, textarea, select')) {
+      item.trigger.setAttribute('tabindex', '0');
+      item.trigger.setAttribute('role', 'button');
+      item.trigger.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openLightbox(item);
+        }
+      });
+    }
+  });
+
+  closeButton.addEventListener('click', closeLightbox);
+  prevButton.addEventListener('click', () => moveLightbox(-1));
+  nextButton.addEventListener('click', () => moveLightbox(1));
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!lightbox.classList.contains('open')) return;
+
+    if (event.key === 'Escape') closeLightbox();
+    if (event.key === 'ArrowLeft') moveLightbox(-1);
+    if (event.key === 'ArrowRight') moveLightbox(1);
+  });
+}
+
 const API_KEY = 'dDHxVzCn8Z61uQlo82IbXW9g6mOZZFErmJjebP-SyQ0';
 const kololecArea = [50.4747843, 13.9714202];
 const mapElement = document.querySelector('#kololec-map');
