@@ -96,6 +96,56 @@ const waste = [
   },
 ];
 
+// Voda a energie
+// POZOR: currentOutage odstranit po 2026-06-16T11:00
+const currentOutage = {
+  active: true, // nastavit na false po skončení odstávky
+  date: '16. června 2026',
+  time: '7:30–11:00',
+  area: 'Většina č. p. v Kololeči (viz PDF)',
+  pdf: 'https://www.mesto-trebenice.cz/file/3791041',
+};
+
+const utilities = {
+  water: {
+    provider: { name: 'Severočeské vodovody a kanalizace (SčVK)', url: 'https://www.scvk.cz/zakaznicky-servis/moje-obec/obec/?city_id=565768' },
+    emergency: ['601 267 267', '840 111 111'],
+    emergencyNote: 'Call centrum – nonstop, dle tarifu operátora',
+    links: [
+      { label: 'Havárie a odstávky (živý stav)', href: 'https://www.scvk.cz/zakaznicky-servis/moje-obec/obec/?city_id=565768' },
+      { label: 'Registrace SMS/e-mail upozornění', href: 'https://portal.scvk.cz/smsinfo' },
+    ],
+    price: '156,59 Kč / m³ (vč. DPH, vodné + stočné, platnost od 1. 1. 2026)',
+    priceNote: 'Cena platí pro region SVS. Celková částka zahrnuje dodání i odvod 1 m³ vody; u nemovitostí bez napojení na kanalizaci se stočné neúčtuje.',
+    priceUrl: 'https://www.severoceskavoda.cz/vse-o-vode/',
+  },
+  electricity: {
+    provider: { name: 'ČEZ Distribuce', url: 'https://www.cezdistribuce.cz' },
+    emergency: ['800 850 860'],
+    emergencyNote: 'Zdarma, nonstop pro poruchy; technické požadavky po–pá 8–18 h',
+    links: [
+      { label: 'Ověřit odstávku / poruchu (Bez Šťávy)', href: 'https://www.bezstavy.cz/' },
+      { label: 'Plánované odstávky', href: 'https://www.cezdistribuce.cz/cs/pro-zakazniky/potrebuji-vyresit/stavajici-pripojeni/overeni-planovane-odstavky' },
+      { label: 'Registrace upozornění (SMS / e-mail)', href: 'https://www.cezdistribuce.cz/sluzba' },
+      { label: 'Aplikace Proud (ČEZ)', href: 'https://www.cezdistribuce.cz/cs/proud' },
+    ],
+  },
+  lighting: {
+    links: [
+      { label: 'Nahlásit závadu (ÚŘAD v MOBILU)', href: 'https://mesto-trebenice.uradvmobilu.cz/default/issues' },
+      { label: 'Kontakt na město', href: 'https://www.mesto-trebenice.cz/oficialni-kontakt' },
+    ],
+    note: 'Závady veřejného osvětlení hlaste prostřednictvím aplikace ÚŘAD v MOBILU nebo na podatelně MÚ Třebenice (tel. 416 594 301, podatelna@mesto-trebenice.cz).',
+  },
+  wastewater: {
+    note: 'Způsob likvidace odpadních vod se může lišit podle konkrétní nemovitosti. Krajský Plán rozvoje vodovodů a kanalizací (PRVK) počítá s odváděním odpadních vod z bezodtokových jímek na ČOV Litoměřice.',
+    links: [
+      { label: 'Karta PRVK – Kololeč', href: 'https://prvk.kr-ustecky.cz/prvk/karty/nahled?id=582' },
+      { label: 'SčVK – voda v mé obci', href: 'https://www.scvk.cz/zakaznicky-servis/moje-obec/obec/?city_id=565768' },
+    ],
+  },
+};
+
 const practicalSections = [
   {
     id: 'doprava',
@@ -122,17 +172,7 @@ const practicalSections = [
   {
     id: 'voda-energie',
     title: 'Voda a energie',
-    intro: 'Odstávky, poruchy a kontakty pro technickou infrastrukturu.',
-    items: [
-      ['Odstávky vody', placeholder],
-      ['Poruchy vody', placeholder],
-      ['Výpadky elektřiny', placeholder],
-      ['Veřejné osvětlení', placeholder],
-    ],
-    actions: [
-      { label: 'Zobrazit odstávky', href: null },
-      { label: 'Nahlásit poruchu', href: null },
-    ],
+    intro: 'Kontakty pro havárie, živý stav dodávek a hlášení závad pro vodovod, elektřinu, veřejné osvětlení a plyn.',
   },
   {
     id: 'sluzby',
@@ -334,6 +374,117 @@ const practicalSections = [
                       )}
                     </article>
                   ))}
+                </div>
+              </div>
+            </section>
+          );
+        }
+
+        if (section.id === 'voda-energie') {
+          return (
+            <section class="practical-block practical-block--wide" id={section.id} aria-labelledby={`${section.id}-title`}>
+              <div class="shell">
+                <div class="practical-block-head">
+                  <p class="section-kicker">{num}</p>
+                  <h2 id={`${section.id}-title`}>{section.title}</h2>
+                  <p>{section.intro}</p>
+                </div>
+
+                {currentOutage.active && (
+                  <div class="utility-alert" role="alert">
+                    <span class="utility-alert-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </span>
+                    <div>
+                      <strong>Plánovaná odstávka elektřiny</strong>
+                      <p>{currentOutage.date}, {currentOutage.time} – {currentOutage.area}</p>
+                    </div>
+                    <a href={currentOutage.pdf} target="_blank" rel="noreferrer" class="utility-alert-link">Zobrazit PDF →</a>
+                  </div>
+                )}
+
+                <div class="utility-grid">
+                  <article class="utility-card">
+                    <div class="utility-card-head">
+                      <span class="utility-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.5 2 4 7 4 10c0 4 3.6 8 8 8s8-4 8-8c0-3-2.5-8-8-8z"/><path d="M12 18v4M8 22h8"/></svg>
+                      </span>
+                      <h3>Voda</h3>
+                    </div>
+                    <p class="utility-provider"><a href={utilities.water.provider.url} target="_blank" rel="noreferrer">{utilities.water.provider.name}</a></p>
+                    <div class="utility-emergency">
+                      <span class="utility-emergency-label">Havárie</span>
+                      <div class="utility-phones">
+                        {utilities.water.emergency.map((tel) => (
+                          <a href={`tel:${tel.replace(/ /g,'')}`} class="utility-phone">{tel}</a>
+                        ))}
+                      </div>
+                      <p class="utility-emergency-note">{utilities.water.emergencyNote}</p>
+                    </div>
+                    <div class="utility-links">
+                      {utilities.water.links.map((l) => (
+                        <a href={l.href} target="_blank" rel="noreferrer" class="utility-link">{l.label} →</a>
+                      ))}
+                    </div>
+                    <div class="utility-price">
+                      <span class="utility-price-value">{utilities.water.price}</span>
+                      <p class="utility-price-note">{utilities.water.priceNote} <a href={utilities.water.priceUrl} target="_blank" rel="noreferrer">Více o cenách →</a></p>
+                    </div>
+                  </article>
+
+                  <article class="utility-card">
+                    <div class="utility-card-head">
+                      <span class="utility-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                      </span>
+                      <h3>Elektřina</h3>
+                    </div>
+                    <p class="utility-provider"><a href={utilities.electricity.provider.url} target="_blank" rel="noreferrer">{utilities.electricity.provider.name}</a></p>
+                    <div class="utility-emergency">
+                      <span class="utility-emergency-label">Porucha</span>
+                      <div class="utility-phones">
+                        {utilities.electricity.emergency.map((tel) => (
+                          <a href={`tel:${tel.replace(/ /g,'')}`} class="utility-phone">{tel}</a>
+                        ))}
+                      </div>
+                      <p class="utility-emergency-note">{utilities.electricity.emergencyNote}</p>
+                    </div>
+                    <div class="utility-links">
+                      {utilities.electricity.links.map((l) => (
+                        <a href={l.href} target="_blank" rel="noreferrer" class="utility-link">{l.label} →</a>
+                      ))}
+                    </div>
+                  </article>
+
+                  <article class="utility-card utility-card--slim">
+                    <div class="utility-card-head">
+                      <span class="utility-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+                      </span>
+                      <h3>Veřejné osvětlení</h3>
+                    </div>
+                    <p class="utility-note">{utilities.lighting.note}</p>
+                    <div class="utility-links">
+                      {utilities.lighting.links.map((l) => (
+                        <a href={l.href} target="_blank" rel="noreferrer" class="utility-link">{l.label} →</a>
+                      ))}
+                    </div>
+                  </article>
+
+                  <article class="utility-card utility-card--slim">
+                    <div class="utility-card-head">
+                      <span class="utility-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8"/><path d="M5.2 10.2a7 7 0 1 0 13.6 0"/><path d="M3 10h18"/></svg>
+                      </span>
+                      <h3>Odpadní vody</h3>
+                    </div>
+                    <p class="utility-note">{utilities.wastewater.note}</p>
+                    <div class="utility-links">
+                      {utilities.wastewater.links.map((l) => (
+                        <a href={l.href} target="_blank" rel="noreferrer" class="utility-link">{l.label} →</a>
+                      ))}
+                    </div>
+                  </article>
                 </div>
               </div>
             </section>

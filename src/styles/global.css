@@ -195,6 +195,38 @@ h3 { font-size: 32px; letter-spacing: -0.04em; }
 .transport-tickets { margin-top: 30px; padding: 16px 18px; font-size: 15px; }
 .transport-actions { margin-top: 18px; }
 
+/* Voda a energie */
+.utility-alert { display: flex; align-items: flex-start; gap: 14px; margin-top: 28px; padding: 18px 22px; border-radius: 14px; background: #fff4d6; border: 1px solid #e6c84a; color: #4a3800; }
+.utility-alert-icon { flex: 0 0 auto; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 8px; background: #fde74c; color: #4a3800; }
+.utility-alert-icon svg { width: 20px; height: 20px; }
+.utility-alert strong { display: block; font-size: 15px; font-weight: 700; }
+.utility-alert p { margin: 4px 0 0; font-size: 14px; }
+.utility-alert-link { margin-left: auto; flex: 0 0 auto; white-space: nowrap; align-self: center; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #4a3800; text-decoration: none; }
+.utility-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+.utility-card { display: flex; flex-direction: column; gap: 18px; padding: 26px 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); box-shadow: 0 12px 30px rgba(28, 48, 33, 0.05); }
+.utility-card--slim { background: var(--cream); box-shadow: none; }
+.utility-card-head { display: flex; align-items: center; gap: 12px; }
+.utility-icon { display: grid; flex: 0 0 auto; place-items: center; width: 42px; height: 42px; border-radius: 11px; color: var(--forest); background: var(--cream); }
+.utility-card--slim .utility-icon { background: var(--paper); }
+.utility-icon svg { width: 22px; height: 22px; }
+.utility-card-head h3 { font-size: 22px; }
+.utility-provider { margin: 0; font-size: 13px; color: var(--muted); }
+.utility-provider a { color: var(--forest); font-weight: 700; text-decoration: none; }
+.utility-emergency { padding: 16px 18px; border-radius: 12px; background: rgba(49, 83, 58, 0.05); border: 1px solid var(--line); }
+.utility-emergency-label { display: block; margin-bottom: 8px; color: var(--forest-soft); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.utility-phones { display: flex; flex-wrap: wrap; gap: 8px; }
+.utility-phone { display: inline-block; padding: 7px 16px; border-radius: 999px; background: var(--forest); color: #fff; font-family: "Fraunces", Georgia, serif; font-size: 20px; letter-spacing: 0.02em; text-decoration: none; transition: background 160ms ease; }
+.utility-phone:hover { background: var(--forest-deep); }
+.utility-emergency-note { margin: 10px 0 0; color: var(--muted); font-size: 13px; }
+.utility-links { display: flex; flex-direction: column; gap: 8px; }
+.utility-link { color: var(--forest); font-size: 13px; font-weight: 700; text-decoration: none; }
+.utility-link:hover { color: var(--forest-deep); text-decoration: underline; }
+.utility-price { padding: 14px 16px; border-radius: 10px; background: var(--cream); }
+.utility-price-value { display: block; font-family: "Fraunces", Georgia, serif; font-size: 22px; color: var(--forest-deep); letter-spacing: -0.02em; }
+.utility-price-note { margin: 6px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.utility-price-note a { color: var(--forest); font-weight: 700; text-decoration: none; }
+.utility-note { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+
 /* Odpady – karty podle druhu odpadu */
 .waste-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 36px; }
 .waste-card { display: flex; flex-direction: column; padding: 26px 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); box-shadow: 0 12px 30px rgba(28, 48, 33, 0.05); }
@@ -397,6 +429,7 @@ dd { margin: 0; color: #425047; }
   .archive-callout, .practical-callout { grid-template-columns: 1fr; align-items: start; }
   .practical-block-inner { grid-template-columns: 1fr; gap: 22px; }
   .transport-modes { grid-template-columns: 1fr; }
+  .utility-grid { grid-template-columns: 1fr; }
   .waste-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .landmark-grid { grid-template-columns: 1fr; }
   .nearby-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
