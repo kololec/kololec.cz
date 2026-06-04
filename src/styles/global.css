@@ -188,7 +188,8 @@ h3 { font-size: 32px; letter-spacing: -0.04em; }
 .transport-note { margin: 18px 0 0; padding: 12px 15px; border-left: 3px solid var(--forest); border-radius: 0 8px 8px 0; background: var(--cream); color: #41504a; font-size: 14px; line-height: 1.55; }
 .transport-note a { color: var(--forest); font-weight: 700; }
 .transport-image { margin: 20px 0 0; overflow: hidden; border-radius: 12px; }
-.transport-image img { display: block; width: 100%; height: auto; }
+.transport-image img { display: block; width: 100%; height: auto; transition: transform 500ms ease, filter 500ms ease; }
+.transport-image a:hover img, .transport-image a:focus-visible img { transform: scale(1.04); filter: brightness(0.96); }
 .transport-tickets { margin-top: 30px; padding: 16px 18px; font-size: 15px; }
 .transport-actions { margin-top: 18px; }
 .practical-list { display: grid; gap: 1px; margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--line); }
