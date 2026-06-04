@@ -47,6 +47,41 @@ const chroniclers = [
   { years: '1982–2010', name: 'kronika nebyla vedena' },
 ];
 
+// Vývoj počtu obyvatel (zdroj: Wikipedia, sčítání 2021)
+const popData = [
+  { year: 1869, pop: 135, homes: 33 },
+  { year: 1880, pop: 158, homes: 33 },
+  { year: 1890, pop: 116, homes: 33 },
+  { year: 1900, pop: 150, homes: 30 },
+  { year: 1910, pop: 195, homes: 36 },
+  { year: 1921, pop: 184, homes: 37 },
+  { year: 1930, pop: 182, homes: 39 },
+  { year: 1950, pop: 138, homes: 40 },
+  { year: 1970, pop: 117, homes: 37 },
+  { year: 1980, pop:  81, homes: 32 },
+  { year: 1991, pop:  67, homes: 35 },
+  { year: 2001, pop:  71, homes: 37 },
+  { year: 2011, pop:  81, homes: 37 },
+  { year: 2021, pop:  92, homes: null },
+];
+
+const svgW = 820, svgH = 260;
+const pad = { top: 24, right: 16, bottom: 46, left: 44 };
+const cW = svgW - pad.left - pad.right;
+const cH = svgH - pad.top - pad.bottom;
+const minY = 1869, maxY = 2021;
+const maxV = 220;
+
+const xS = (yr: number) => pad.left + (yr - minY) / (maxY - minY) * cW;
+const yS = (v:  number) => pad.top  + cH - (v / maxV) * cH;
+
+const popPts  = popData.map(d => `${xS(d.year).toFixed(1)},${yS(d.pop).toFixed(1)}`).join(' ');
+const homesPts = popData.filter(d => d.homes !== null)
+  .map(d => `${xS(d.year).toFixed(1)},${yS(d.homes!).toFixed(1)}`).join(' ');
+
+const yTicks = [0, 50, 100, 150, 200];
+const xTicks = [1880, 1910, 1930, 1970, 1991, 2011, 2021];
+
 const photos = [
   { id: 113, alt: 'Pohlednice z Kololeče z let 1900–1910', caption: 'Pohlednice z Kololeče (1900–1910)' },
   { id: 115, alt: 'Náves Kololeče za kapličkou na dobovém snímku', caption: 'Náves za kapličkou' },
@@ -162,6 +197,60 @@ const photos = [
             </a>
           ))}
         </div>
+      </div>
+    </section>
+
+    <section class="section history-population">
+      <div class="shell">
+        <p class="section-kicker">Vývoj obce</p>
+        <h2>Počet obyvatel a domů</h2>
+        <p class="history-pop-intro">Kololeč dosáhla svého maxima na začátku 20. století. Po druhé světové válce počet obyvatel trvale klesal, minimum bylo zaznamenáno při sčítání v roce 1991. Od té doby obec mírně roste.</p>
+
+        <div class="pop-chart-wrap">
+          <svg viewBox={`0 0 ${svgW} ${svgH}`} class="pop-chart" aria-label="Graf vývoje počtu obyvatel a domů v Kololeči" role="img">
+            {/* Mřížka */}
+            {yTicks.map(v => (
+              <>
+                <line x1={pad.left} y1={yS(v)} x2={svgW - pad.right} y2={yS(v)} stroke="rgba(49,83,58,0.1)" stroke-width="1" />
+                <text x={pad.left - 8} y={yS(v) + 4} text-anchor="end" font-size="11" fill="#647065">{v}</text>
+              </>
+            ))}
+
+            {/* Linky */}
+            <polyline points={homesPts} fill="none" stroke="rgba(49,83,58,0.3)" stroke-width="2" stroke-linejoin="round" />
+            <polyline points={popPts}   fill="none" stroke="#31533a"            stroke-width="2.5" stroke-linejoin="round" />
+
+            {/* Plochou plocha pod Obyvatelé */}
+            <polygon
+              points={`${pad.left},${pad.top + cH} ${popPts} ${xS(2021).toFixed(1)},${pad.top + cH}`}
+              fill="rgba(49,83,58,0.07)"
+            />
+
+            {/* Body + štítky Obyvatelé */}
+            {popData.map(d => (
+              <>
+                <circle cx={xS(d.year)} cy={yS(d.pop)} r="3.5" fill="#31533a" />
+              </>
+            ))}
+
+            {/* X-axis popisky */}
+            {xTicks.map(yr => (
+              <text x={xS(yr)} y={svgH - 6} text-anchor="middle" font-size="11" fill="#647065">{yr}</text>
+            ))}
+            <text x={xS(1869)} y={svgH - 6} text-anchor="middle" font-size="11" fill="#647065">1869</text>
+
+            {/* Osy */}
+            <line x1={pad.left} y1={pad.top} x2={pad.left} y2={pad.top + cH} stroke="rgba(49,83,58,0.2)" stroke-width="1" />
+            <line x1={pad.left} y1={pad.top + cH} x2={svgW - pad.right} y2={pad.top + cH} stroke="rgba(49,83,58,0.2)" stroke-width="1" />
+          </svg>
+
+          <div class="pop-chart-legend">
+            <span><span class="legend-dot legend-dot--pop"></span>Obyvatelé</span>
+            <span><span class="legend-dot legend-dot--homes"></span>Domy</span>
+          </div>
+        </div>
+
+        <p class="pop-source">Zdroj: <a href="https://cs.wikipedia.org/wiki/Kolole%C4%8D" target="_blank" rel="noreferrer">Wikipedia</a>, sčítání lidu 1869–2021.</p>
       </div>
     </section>
 

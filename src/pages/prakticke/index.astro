@@ -146,6 +146,24 @@ const utilities = {
   },
 };
 
+// Internet a mobilní signál
+const internet = {
+  fixed: [
+    { name: 'CELANET', note: 'lokální poskytovatel', tags: ['Wi-Fi', '60 GHz Wi-Fi', 'Optika', 'Metalika'], phone: '+420606166800', url: 'https://www.celanet.cz/index2.php', actionLabel: 'Pokrytí', actionUrl: 'https://www.celanet.cz/page/pokryti.php' },
+    { name: 'Speednet', note: 'optické připojení', tags: ['Optika'], phone: '+420774743730', url: 'http://speednet.cz/', actionLabel: 'Web', actionUrl: 'http://speednet.cz/' },
+
+    { name: 'Starlink', note: 'satelitní internet jako záloha tam, kde nevyhovuje pozemní síť', tags: ['Satelit'], phone: null, url: 'https://www.starlink.com/cz/map', actionLabel: 'Ověřit dostupnost', actionUrl: 'https://www.starlink.com/cz/map' },
+    { name: 'ČTÚ VPortal – pevné sítě', note: 'nezávislá mapa dostupnosti pevného internetu od ČTÚ · přednastaveno na Kololeč', tags: null, phone: null, url: 'https://vportal.ctu.gov.cz/fix/mapa?x=13.9746637&y=50.4774492&z=16&r=dw&v=avg&bv=sp&bs=ed&bo=g&bfy=2024&bft=255&bfsd=63&bfv=31&nc=0&nv=dw&nt=max&na=g&ny=2026&nq=15&nfs=63&mp=0_100&bp=1_90&ba=1_80&tp=0_100&ta=0_80&am=1_50&bgt=0_80_d&bg=1_40_b', actionLabel: 'Otevřít mapu', actionUrl: 'https://vportal.ctu.gov.cz/fix/mapa?x=13.9746637&y=50.4774492&z=16&r=dw&v=avg&bv=sp&bs=ed&bo=g&bfy=2024&bft=255&bfsd=63&bfv=31&nc=0&nv=dw&nt=max&na=g&ny=2026&nq=15&nfs=63&mp=0_100&bp=1_90&ba=1_80&tp=0_100&ta=0_80&am=1_50&bgt=0_80_d&bg=1_40_b' },
+  ],
+  mobile: [
+    { name: 'O2', phone: '+420800020202', url: 'https://www.o2.cz/mapa-pokryti' },
+    { name: 'T-Mobile', phone: '+420603603603', url: 'https://www.t-mobile.cz/mapa-pokryti' },
+    { name: 'Vodafone', phone: '+420800770000', url: 'https://www.vodafone.cz/mapa-pokryti/' },
+    { name: 'ČTÚ VPortal – mobilní sítě', phone: null, url: 'https://vportal.ctu.gov.cz/mobile/mapa?x=13.9746637&y=50.4774492&z=16&o=2&t=5&f=0&m=ob&r=ra&v=avg&e=c&k=ob&a=z&c=pop&nc=0&nv=dw&nt=max&na=g&ny=2026&nq=15&nfs=63&mp=0_100&ma=0_90&ed=0_100&ea=0_80&tp=0_100&ta=0_100&ba=0_90&bp=0_100&ca=1_50&am=1_50&bgt=0_80_d&bg=1_40_b', note: 'nezávislé porovnání O2, T-Mobile a Vodafone · přednastaveno na Kololeč' },
+  ],
+  measurement: { name: 'ČTÚ-NetTest', url: 'https://nettest.ctu.gov.cz/cs/', note: 'Měří rychlost stahování, odesílání a odezvu. Certifikované měření kabelem (nikoliv přes Wi-Fi) lze použít jako podklad pro reklamaci pevného připojení.' },
+};
+
 // Služby v okolí
 // Ověřeno 4. 6. 2026. hours=null → nezobrazí se, hours='viz web' → odkaz na web
 const services = [
@@ -318,14 +336,7 @@ const practicalSections = [
   {
     id: 'internet',
     title: 'Internet a mobilní signál',
-    intro: 'Dostupnost připojení se může lišit podle konkrétního domu a technických možností v místě.',
-    items: [
-      ['Dostupní internetoví poskytovatelé', preparing],
-      ['Dostupné technologie', 'Bezdrátové připojení, DSL, LTE nebo 5G - dostupnost ověříme podle konkrétních poskytovatelů.'],
-    ],
-    providers: [
-      { name: placeholder, technology: preparing, note: 'Doplníme po ověření dostupnosti.' },
-    ],
+    intro: 'Dostupnost i rychlost se liší dům od domu – ověřte svou konkrétní adresu u každého poskytovatele.',
   },
   {
     id: 'voda-energie',
@@ -625,6 +636,68 @@ const practicalSections = [
                       ))}
                     </div>
                   </article>
+                </div>
+              </div>
+            </section>
+          );
+        }
+
+        if (section.id === 'internet') {
+          return (
+            <section class="practical-block practical-block--wide" id={section.id} aria-labelledby={`${section.id}-title`}>
+              <div class="shell">
+                <div class="practical-block-head">
+                  <p class="section-kicker">{num}</p>
+                  <h2 id={`${section.id}-title`}>{section.title}</h2>
+                  <p>{section.intro}</p>
+                </div>
+
+                {/* Pevný internet */}
+                <p class="internet-section-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="14" height="14"><path d="M4 9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 9V7a4 4 0 0 1 8 0v2"/></svg>
+                  Pevný internet
+                </p>
+                <div class="internet-cards">
+                  {internet.fixed.map((p) => (
+                    <article class="inet-card">
+                      <div class="inet-card-head">
+                        <a href={p.url} target="_blank" rel="noreferrer" class="inet-name">{p.name}</a>
+                        {p.phone && <a href={`tel:${p.phone}`} class="inet-phone">{p.phone.replace('+420','').replace(/(\d{3})(\d{3})(\d{3})/,'$1 $2 $3').trim()}</a>}
+                      </div>
+                      {p.tags && <div class="internet-tags">{p.tags.map((t) => <span class="internet-tag">{t}</span>)}</div>}
+                      {p.note && <p class="inet-note">{p.note}</p>}
+                      {p.actionUrl && <a href={p.actionUrl} target="_blank" rel="noreferrer" class="waste-link">{p.actionLabel} →</a>}
+                    </article>
+                  ))}
+                </div>
+
+                {/* Mobilní signál */}
+                <p class="internet-section-label" style="margin-top: 28px;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="14" height="14"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+                  Mobilní signál
+                  <span class="internet-section-note">Mapy jsou orientační simulace mimo budovy.</span>
+                </p>
+                <div class="internet-cards">
+                  {internet.mobile.map((m) => (
+                    <article class="inet-card">
+                      <div class="inet-card-head">
+                        <a href={m.url} target="_blank" rel="noreferrer" class="inet-name">{m.name}</a>
+                        {m.phone && <a href={`tel:${m.phone}`} class="inet-phone">{m.phone.replace('+420','').replace(/(\d{3})(\d{3})(\d{3})/,'$1 $2 $3').trim()}</a>}
+                      </div>
+                      {m.note && <p class="inet-note">{m.note}</p>}
+                      <a href={m.url} target="_blank" rel="noreferrer" class="waste-link">Mapa pokrytí →</a>
+                    </article>
+                  ))}
+                </div>
+
+                {/* Měření */}
+                <div class="internet-measurement">
+                  <p class="internet-col-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="16" height="16"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    Měření rychlosti
+                  </p>
+                  <p class="internet-note">{internet.measurement.note}</p>
+                  <a href={internet.measurement.url} target="_blank" rel="noreferrer" class="button button-outline practical-button">{internet.measurement.name} →</a>
                 </div>
               </div>
             </section>
