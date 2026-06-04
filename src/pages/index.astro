@@ -75,8 +75,8 @@ const navItems = [
                 <span>první písemná zmínka</span>
               </article>
               <article class="fact-card reveal">
-                <strong>92</strong>
-                <span>obyvatel dle sčítání 2021</span>
+                <strong>98</strong>
+                <span>Obyvatel</span>
               </article>
               <article class="fact-card reveal">
                 <strong>37</strong>
@@ -91,16 +91,18 @@ const navItems = [
                 <span>nadmořská výška</span>
               </article>
               <article class="fact-card reveal">
-                <strong>769584</strong>
-                <span>kód katastrálního území</span>
-              </article>
-              <article class="fact-card reveal">
                 <strong>411 15</strong>
                 <span>poštovní směrovací číslo</span>
               </article>
               <article class="fact-card reveal">
-                <strong>8</strong>
-                <span>městských částí Třebenic</span>
+                <a class="fact-link" href="https://sgi-nahlizenidokn.cuzk.gov.cz/marushka/default.aspx?themeid=3&MarQueryId=6D2BCEB5&MarQParamCount=1&MarQParam0=769584&MarWindowName=Marushka" target="_blank" rel="noreferrer">
+                  <strong>769584</strong>
+                  <span>kód katastrálního území</span>
+                </a>
+              </article>
+              <article class="fact-card reveal">
+                <strong>~70 km</strong>
+                <span>od Prahy</span>
               </article>
             </div>
           </section>
@@ -322,10 +324,11 @@ const navItems = [
                     <dd>Třebenice · okres Litoměřice · Ústecký kraj</dd>
                   </div>
                 </dl>
-                <div class="map-actions">
-                  <a class="button button-primary" href="https://mapy.com/en/turisticka?q=kololec&amp;source=ward&amp;id=11421&amp;ds=2&amp;x=13.9714202&amp;y=50.4747843&amp;z=15" target="_blank" rel="noreferrer">Otevřít na Mapy.com</a>
-                  <a class="button button-outline" href="https://maps.app.goo.gl/igyk8djasZppbJ6r6" target="_blank" rel="noreferrer">Otevřít na Google Maps</a>
-                  <a class="button button-outline" href="https://www.openstreetmap.org/relation/435822" target="_blank" rel="noreferrer">Otevřít na OpenStreetMap</a>
+                <div class="map-actions" aria-label="Otevřít mapu v externí službě">
+                  <span class="map-actions-label">Otevřít na</span>
+                  <a class="button button-primary map-button" href="https://mapy.com/en/turisticka?q=kololec&amp;source=ward&amp;id=11421&amp;ds=2&amp;x=13.9714202&amp;y=50.4747843&amp;z=15" target="_blank" rel="noreferrer">Mapy.com</a>
+                  <a class="button button-outline map-button" href="https://maps.app.goo.gl/igyk8djasZppbJ6r6" target="_blank" rel="noreferrer">Google Maps</a>
+                  <a class="button button-outline map-button" href="https://www.openstreetmap.org/relation/435822" target="_blank" rel="noreferrer">OSM</a>
                 </div>
               </div>
               <div class="map-frame reveal">
