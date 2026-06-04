@@ -70,6 +70,21 @@ h1 { max-width: 720px; font-size: clamp(82px, 14vw, 178px); letter-spacing: -0.0
 h2 { font-size: clamp(44px, 6vw, 75px); letter-spacing: -0.055em; }
 h3 { font-size: 32px; letter-spacing: -0.04em; }
 .hero-lead { max-width: 620px; margin: 18px 0 0; font-size: clamp(19px, 2.2vw, 27px); line-height: 1.42; color: rgba(255,255,255,0.92); }
+/* Weather widget – desktop: large card aligned to shell right edge */
+.hero-weather { display: flex; flex-direction: column; gap: 6px; position: absolute; right: calc((100vw - var(--shell)) / 2); bottom: clamp(70px, 10vh, 130px); padding: 22px 26px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.22); background: rgba(14,26,17,0.52); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); color: #fff; min-width: 160px; opacity: 0; visibility: hidden; transform: translateY(10px); pointer-events: none; transition: opacity 500ms ease, transform 500ms ease, visibility 0s 500ms; }
+.hero-weather.hw-loaded { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; transition: opacity 500ms ease, transform 500ms ease, visibility 0s 0s; }
+.hw-location { margin: 0; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+.hw-main { display: flex; align-items: center; gap: 10px; }
+.hw-icon { font-size: 28px; line-height: 1; }
+.hw-temp { font-family: "Fraunces", Georgia, serif; font-size: 38px; font-weight: 600; letter-spacing: -0.04em; color: #fff; line-height: 1; }
+.hw-divider { font-size: 24px; color: rgba(255,255,255,0.3); line-height: 1; align-self: center; }
+.hw-humidity-wrap { display: flex; align-items: center; gap: 4px; }
+.hw-drop { font-size: 22px; line-height: 1; }
+.hw-humidity { font-family: "Fraunces", Georgia, serif; font-size: 38px; font-weight: 600; letter-spacing: -0.04em; color: rgba(255,255,255,0.65); line-height: 1; }
+.hw-desc { margin: 0; font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 500; }
+.hero-weather { text-decoration: none; }
+.hero-weather * { text-decoration: none; }
+.hero-weather:hover { border-color: rgba(255,255,255,0.38); background: rgba(14,26,17,0.62); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
 .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; padding: 0 19px; border: 1px solid transparent; border-radius: 999px; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 180ms ease; }
 .button-primary { color: #fff; background: var(--forest); }
@@ -599,6 +614,15 @@ dd { margin: 0; color: #425047; }
   h1 { font-size: clamp(77px, 27vw, 118px); }
   h2 { font-size: clamp(39px, 14vw, 58px); }
   .hero-credit { right: 13px; bottom: 12px; left: 13px; }
+  /* Mobile: compact pill in top-right of hero */
+  .hero-weather { bottom: auto; top: 86px; right: 16px; min-width: auto; padding: 8px 16px 8px 12px; border-radius: 999px; flex-direction: row; align-items: center; gap: 8px; transform: translateX(6px); }
+  .hero-weather.hw-loaded { transform: translateX(0); }
+  .hw-location { display: none; }
+  .hw-humidity { display: none; }
+  .hw-main { gap: 6px; }
+  .hw-icon { font-size: 20px; }
+  .hw-temp { font-size: 22px; }
+  .hw-desc { font-size: 12px; }
   .section { padding: 78px 0; }
   .intro-drawings { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .facts { padding: 0; }

@@ -40,6 +40,17 @@ const navItems = [
               </div>
             </div>
             <a class="hero-credit" href="https://commons.wikimedia.org/wiki/File:Kolole%C4%8D_n%C3%A1ves.jpg" target="_blank" rel="noreferrer">Foto: Gortyna / Wikimedia Commons</a>
+
+            <a id="hero-weather" href="https://www.windy.com/cs/-Meteoradar-radar?radar,50.477,13.975,5" target="_blank" rel="noreferrer" class="hero-weather" aria-live="polite" aria-label="Aktuální počasí v Kololeči – zdroj dat: Open-Meteo">
+              <p class="hw-location">Kololeč, nyní</p>
+              <div class="hw-main">
+                <span id="hw-icon" class="hw-icon" aria-hidden="true"></span>
+                <strong id="hw-temp" class="hw-temp"></strong>
+                <span class="hw-divider" aria-hidden="true">·</span>
+                <span class="hw-humidity-wrap"><span class="hw-drop" aria-hidden="true">💧</span><span id="hw-humidity" class="hw-humidity"></span></span>
+              </div>
+              <p id="hw-desc" class="hw-desc">–</p>
+            </a>
           </section>
     
           <section class="intro section" id="o-obci" aria-labelledby="intro-title">
@@ -466,3 +477,45 @@ const navItems = [
           </section>
   </main>
 </BaseLayout>
+
+<script is:inline>
+(function () {
+  const ICONS = {
+    0:'☀️',1:'🌤️',2:'⛅',3:'☁️',
+    45:'🌫️',48:'🌫️',
+    51:'🌦️',53:'🌦️',55:'🌦️',
+    61:'🌧️',63:'🌧️',65:'🌧️',
+    71:'❄️',73:'❄️',75:'❄️',77:'❄️',
+    80:'🌦️',81:'🌦️',82:'🌦️',
+    85:'🌨️',86:'🌨️',
+    95:'⛈️',96:'⛈️',99:'⛈️'
+  };
+  const DESC = {
+    0:'Jasno',1:'Převážně jasno',2:'Polojasno',3:'Zataženo',
+    45:'Mlha',48:'Mlha',
+    51:'Slabé mrholení',53:'Mrholení',55:'Mrholení',
+    61:'Slabý déšť',63:'Déšť',65:'Silný déšť',
+    71:'Slabé sněžení',73:'Sněžení',75:'Silné sněžení',77:'Sněhové vločky',
+    80:'Přeháňky',81:'Přeháňky',82:'Silné přeháňky',
+    85:'Sněhové přeháňky',86:'Silné sněhové přeháňky',
+    95:'Bouřky',96:'Bouřky s krupobitím',99:'Silné bouřky'
+  };
+
+  fetch('https://api.open-meteo.com/v1/forecast?latitude=50.4774&longitude=13.9746&current=temperature_2m,weather_code,relative_humidity_2m&timezone=Europe%2FPrague&forecast_days=1')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var c = data.current;
+      var code = c.weather_code;
+      var temp = Math.round(c.temperature_2m * 10) / 10;
+      document.getElementById('hw-icon').textContent = ICONS[code] || '🌡️';
+      document.getElementById('hw-temp').textContent = temp + ' °C';
+      document.getElementById('hw-desc').textContent = DESC[code] || 'Počasí';
+      if (c.relative_humidity_2m !== undefined) { document.getElementById('hw-humidity').textContent = Math.round(c.relative_humidity_2m) + ' %'; }
+      var el = document.getElementById('hero-weather');
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() { el.classList.add('hw-loaded'); });
+      });
+    })
+    .catch(function(){ /* tiché selhání — widget zůstane skrytý */ });
+})();
+</script>
