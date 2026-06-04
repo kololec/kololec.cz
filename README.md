@@ -37,7 +37,9 @@ const API_KEY = 'vas-api-klic';
 
 ## Nasazení
 
-Na Netlify se používá `netlify.toml`: build příkaz je `npm run build` a publish adresář je `dist/`. Na jiném statickém hostingu nahrajte obsah `dist/`.
+Nasazení běží přes GitHub Pages a workflow `.github/workflows/deploy.yml`. Po pushi do větve `main` se spustí `npm ci`, `npm run build`, nahraje se obsah `dist/` a publikuje se přes GitHub Pages.
+
+Custom doména je nastavená souborem `public/CNAME` na `kololec.cz`. V nastavení repozitáře na GitHubu musí být u Pages zvolený zdroj `GitHub Actions`.
 
 ## Obsah a fotografie
 
