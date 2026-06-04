@@ -85,7 +85,8 @@ const cleanContent = async (html, pageSlug, assetMap) => {
   const imageMatches = [...content.matchAll(/(?:href|src)="(\/img\/obrazky\/[^"]+)"/g)];
   for (const [, sourcePath] of imageMatches) {
     if (!assetMap.has(sourcePath)) {
-      const extension = extname(sourcePath) || '.jpg';
+      const cleanSourcePath = sourcePath.split('?')[0];
+      const extension = extname(cleanSourcePath) || '.jpg';
       const fileName = `${pageSlug}-${assetMap.size + 1}${extension}`;
       const localPath = join(archiveDir, fileName);
       await fetchAsset(`${baseUrl}${sourcePath}`, localPath);
