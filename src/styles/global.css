@@ -144,11 +144,53 @@ h3 { font-size: 32px; letter-spacing: -0.04em; }
 
 /* Practical information page */
 .practical-hero h1 { font-size: clamp(54px, 8vw, 104px); }
-.practical-section { padding-top: 34px; background: var(--paper); }
-.practical-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
-.practical-card { display: grid; gap: 22px; padding: 28px; border: 1px solid var(--line); border-radius: 16px; background: var(--cream); box-shadow: 0 16px 38px rgba(28, 48, 33, 0.06); }
-.practical-card-head h2 { font-size: clamp(30px, 4vw, 46px); }
-.practical-card-head p { margin: 12px 0 0; color: var(--muted); }
+/* Rozcestník */
+.practical-nav { padding: 0 0 52px; background: var(--paper); }
+.practical-nav-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.practical-nav-list a { display: inline-flex; align-items: center; padding: 11px 19px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); color: var(--forest-deep); font-weight: 700; font-size: 14px; text-decoration: none; transition: 160ms ease; }
+.practical-nav-list a:hover, .practical-nav-list a:focus-visible { border-color: var(--forest); background: rgba(49, 83, 58, 0.06); transform: translateY(-1px); }
+
+/* Stacked sections */
+.practical-blocks { display: grid; }
+.practical-block { padding: clamp(40px, 5vw, 64px) 0; border-top: 1px solid var(--line); scroll-margin-top: 92px; }
+.practical-block:first-child { border-top: 0; }
+.practical-block-inner { display: grid; grid-template-columns: minmax(220px, 0.5fr) minmax(0, 1fr); gap: clamp(30px, 6vw, 80px); align-items: start; }
+.practical-block-head h2 { font-size: clamp(28px, 4vw, 44px); }
+.practical-block-head p { margin: 14px 0 0; color: var(--muted); }
+.practical-block-head a { color: var(--forest); font-weight: 700; }
+.practical-block-body { display: grid; gap: 20px; }
+
+/* Doprava – rozdělení podle typu dopravy */
+.practical-block--wide .practical-block-head { max-width: 760px; }
+.transport-modes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 36px; align-items: start; }
+.transport-mode { display: flex; flex-direction: column; padding: 26px 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); box-shadow: 0 12px 30px rgba(28, 48, 33, 0.05); }
+.transport-mode-head { display: flex; align-items: center; gap: 13px; margin-bottom: 20px; }
+.transport-icon { display: grid; flex: 0 0 auto; place-items: center; width: 46px; height: 46px; border-radius: 12px; color: var(--forest); background: var(--cream); }
+.transport-icon svg { width: 26px; height: 26px; }
+.transport-mode-head h3 { font-size: 23px; }
+.transport-stops { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.transport-stops > li { padding: 15px 0; border-top: 1px solid var(--line); }
+.transport-stops > li:first-child { padding-top: 0; border-top: 0; }
+.transport-stop-main { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.transport-stop-main strong { color: var(--ink); font-size: 15px; }
+.transport-dist { flex: 0 0 auto; color: var(--forest-soft); font-size: 12px; font-weight: 700; }
+.transport-dest { margin: 6px 0 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.transport-dest a { color: var(--forest); font-weight: 700; }
+.transport-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.transport-link { display: inline-block; margin-top: 10px; color: var(--forest); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; }
+.transport-link:hover { color: var(--forest-deep); }
+.transport-soon { display: inline-block; margin-top: 10px; color: var(--muted); font-size: 12px; font-weight: 600; font-style: italic; }
+.transport-distances { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.transport-distances li { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 11px 0; border-top: 1px solid var(--line); }
+.transport-distances li:first-child { border-top: 0; }
+.transport-distances strong { color: var(--ink); font-size: 15px; font-weight: 600; }
+.transport-distances span { flex: 0 0 auto; color: var(--forest-soft); font-size: 13px; font-weight: 700; }
+.transport-note { margin: 18px 0 0; padding: 12px 15px; border-left: 3px solid var(--forest); border-radius: 0 8px 8px 0; background: var(--cream); color: #41504a; font-size: 14px; line-height: 1.55; }
+.transport-note a { color: var(--forest); font-weight: 700; }
+.transport-image { margin: 20px 0 0; overflow: hidden; border-radius: 12px; }
+.transport-image img { display: block; width: 100%; height: auto; }
+.transport-tickets { margin-top: 30px; padding: 16px 18px; font-size: 15px; }
+.transport-actions { margin-top: 18px; }
 .practical-list { display: grid; gap: 1px; margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--line); }
 .practical-list div { display: grid; grid-template-columns: minmax(150px, 0.46fr) minmax(0, 1fr); gap: 14px; padding: 14px 16px; background: var(--paper); }
 .practical-list dt { color: var(--forest-deep); font-size: 12px; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; }
@@ -332,7 +374,8 @@ dd { margin: 0; color: #425047; }
   .facts-grid { grid-template-columns: repeat(2, 1fr); }
   .life-grid, .archive-preview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .archive-callout, .practical-callout { grid-template-columns: 1fr; align-items: start; }
-  .practical-grid { grid-template-columns: 1fr; }
+  .practical-block-inner { grid-template-columns: 1fr; gap: 22px; }
+  .transport-modes { grid-template-columns: 1fr; }
   .landmark-grid { grid-template-columns: 1fr; }
   .nearby-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .nearby-card { min-height: 260px; }
@@ -365,7 +408,6 @@ dd { margin: 0; color: #425047; }
   .life-card { min-height: 260px; padding: 23px; }
   .life-card span { margin-bottom: 38px; }
   .archive-callout, .practical-callout { padding: 23px; }
-  .practical-card { padding: 22px; }
   .practical-list div { grid-template-columns: 1fr; gap: 4px; }
   .provider-table > div { grid-template-columns: 1fr; }
   .provider-table-head { display: none !important; }
