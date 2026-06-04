@@ -1,0 +1,402 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const navItems = [
+  { href: '#o-obci', label: 'O obci' },
+  { href: '#zivot', label: 'Život' },
+  { href: '#historie', label: 'Historie' },
+  { href: '#pamatky', label: 'Památky' },
+  { href: '#galerie', label: 'Galerie' },
+  { href: '#okoli', label: 'V okolí' },
+  { href: '#mapa', label: 'Mapa' },
+];
+---
+
+<BaseLayout navItems={navItems} leaflet scrollTopBrand>
+  <main id="obsah">
+    <section class="hero" aria-labelledby="hero-title">
+            <img class="hero-image" src="/assets/kololec-naves.jpg" alt="Náves v Kololeči s kapličkou a hradem Košťálov v pozadí" />
+            <div class="hero-shade"></div>
+            <div class="shell hero-content">
+              <p class="eyebrow">Ústecký kraj · okres Litoměřice</p>
+              <h1 id="hero-title">Kololeč</h1>
+              <p class="hero-lead">Malá vesnice v krajině Českého středohoří, jen kilometr západně od Třebenic.</p>
+              <div class="hero-actions">
+                <a class="button button-primary" href="#o-obci">Poznejte Kololeč</a>
+                <a class="button button-glass" href="#mapa">Kde nás najdete</a>
+              </div>
+            </div>
+            <a class="hero-credit" href="https://commons.wikimedia.org/wiki/File:Kolole%C4%8D_n%C3%A1ves.jpg" target="_blank" rel="noreferrer">Foto: Gortyna / Wikimedia Commons</a>
+          </section>
+    
+          <section class="intro section" id="o-obci" aria-labelledby="intro-title">
+            <div class="shell intro-grid">
+              <div>
+                <p class="section-kicker">O obci</p>
+                <h2 id="intro-title">Klidné místo nedaleko Třebenic</h2>
+              </div>
+              <div class="intro-copy">
+                <p>Kololeč je malá vesnice a část města Třebenice v okrese Litoměřice. Leží přibližně jeden kilometr západně od Třebenic, při severozápadní hranici okresu a na úpatí Kozích horek.</p>
+                <p>Na návsi najdete kapličku, sochu svatého Jana Nepomuckého i zastřešené odpočívadlo. Starý web osadního výboru připomíná také praktickou zvláštnost obce: v Kololeči končí silnice, a tak si vesnice drží klid bez většího průjezdného provozu.</p>
+              </div>
+            </div>
+          </section>
+    
+          <section class="facts" aria-label="Základní údaje">
+            <div class="shell facts-grid">
+              <article class="fact-card reveal">
+                <strong>1436</strong>
+                <span>první písemná zmínka</span>
+              </article>
+              <article class="fact-card reveal">
+                <strong>92</strong>
+                <span>obyvatel dle sčítání 2021</span>
+              </article>
+              <article class="fact-card reveal">
+                <strong>37</strong>
+                <span>obytných domů dle starého webu</span>
+              </article>
+              <article class="fact-card reveal">
+                <strong>1,50 km²</strong>
+                <span>výměra uváděná v archivu OVK</span>
+              </article>
+              <article class="fact-card reveal">
+                <strong>254 m</strong>
+                <span>nadmořská výška</span>
+              </article>
+              <article class="fact-card reveal">
+                <strong>769584</strong>
+                <span>kód katastrálního území</span>
+              </article>
+              <article class="fact-card reveal">
+                <strong>411 15</strong>
+                <span>poštovní směrovací číslo</span>
+              </article>
+              <article class="fact-card reveal">
+                <strong>8</strong>
+                <span>městských částí Třebenic</span>
+              </article>
+            </div>
+          </section>
+    
+          <section class="section village-life" id="zivot" aria-labelledby="life-title">
+            <div class="shell">
+              <p class="section-kicker">Život v obci</p>
+              <div class="section-heading-row">
+                <h2 id="life-title">Náves jako přirozené místo setkávání</h2>
+                <p>Archiv osadního výboru zachycuje Kololeč hlavně jako sousedskou obec, kde se společné věci dějí venku, na návsi a kolem kapličky.</p>
+              </div>
+    
+              <div class="life-grid">
+                <article class="life-card reveal">
+                  <span>Setkávání</span>
+                  <h3>Vánoce, Mikuláš i sousedská posezení</h3>
+                  <p>Starý web připomíná zpívání koled na Štědrý den, rozsvícení stromu, mikulášskou nadílku, rozloučení s létem i novoroční ohňostroje.</p>
+                </article>
+                <article class="life-card reveal">
+                  <span>Péče o obec</span>
+                  <h3>Brigády a úklid společných míst</h3>
+                  <p>V záznamech se opakují jarní a podzimní brigády, údržba návsi, péče o zeleň a drobné práce, které udržují vesnici upravenou.</p>
+                </article>
+                <article class="life-card reveal">
+                  <span>Akce pro všechny</span>
+                  <h3>Dětské dny, sport a drobné slavnosti</h3>
+                  <p>Kololečské zápisy zmiňují dětské dny, pingpongové turnaje, MDŽ, velikonoční setkávání i další malé události, které držely obec pohromadě.</p>
+                </article>
+              </div>
+    
+              <div class="archive-callout reveal">
+                <div>
+                  <p class="section-kicker">Archiv</p>
+                  <h3>Plné záznamy starého webu jsou zachované v archivu</h3>
+                </div>
+                <a class="button button-primary" href="/archive.html">Otevřít archiv OVK</a>
+              </div>
+            </div>
+          </section>
+    
+          <section class="section history" id="historie" aria-labelledby="history-title">
+            <div class="shell">
+              <div class="story-grid history-intro">
+                <div class="story-image-wrap reveal">
+                  <img src="/assets/kololec-odpocivadlo.jpg" alt="Zastřešené odpočívadlo na návsi v Kololeči" loading="lazy" />
+                </div>
+                <div class="story-copy">
+                  <p class="section-kicker">Historie</p>
+                  <h2 id="history-title">Příběh malé vsi napříč staletími</h2>
+                  <p>První písemná zmínka o Kololeči pochází z roku 1436. Výraznou součástí návsi je kaplička, jejíž doložené opravy a proměny zvonu připomínají péči místních obyvatel o společný prostor.</p>
+                  <p>Podrobnější záznamy se dochovaly především ke kapličce. Díky nim lze sledovat její příběh od počátku 19. století až po novodobou rekonstrukci.</p>
+                </div>
+              </div>
+    
+              <div class="history-layout">
+                <div>
+                  <p class="section-kicker">Časová osa</p>
+                  <h3>Vybrané milníky</h3>
+                </div>
+                <ol class="timeline" aria-label="Vybrané milníky historie Kololeče">
+                  <li class="timeline-item reveal">
+                    <time datetime="1436">1436</time>
+                    <div>
+                      <h4>První písemná zmínka</h4>
+                      <p>Nejstarší známá písemná zmínka o vesnici pochází z roku 1436.</p>
+                    </div>
+                  </li>
+                  <li class="timeline-item reveal">
+                    <time datetime="1800">kolem 1800</time>
+                    <div>
+                      <h4>Vznik kapličky</h4>
+                      <p>Barokní kaplička na návsi byla pravděpodobně postavena kolem roku 1800. Ze stejné doby zřejmě pochází také socha svatého Jana Nepomuckého.</p>
+                    </div>
+                  </li>
+                  <li class="timeline-item reveal">
+                    <time datetime="1884">1884</time>
+                    <div>
+                      <h4>Doložená oprava</h4>
+                      <p>Kaplička prošla opravou a do makovice na její vížce byly vloženy dobové dokumenty.</p>
+                    </div>
+                  </li>
+                  <li class="timeline-item reveal">
+                    <time datetime="1921-06-05">1921</time>
+                    <div>
+                      <h4>Nový zvon po první světové válce</h4>
+                      <p>Po rekvizici původního zvonu během války se obyvatelé složili na nový. Jeho slavnostní svěcení se konalo 5. června 1921.</p>
+                    </div>
+                  </li>
+                  <li class="timeline-item reveal">
+                    <time datetime="1933">1933</time>
+                    <div>
+                      <h4>Oprava ze sbírky občanů</h4>
+                      <p>Díky místní sbírce byly opraveny zdi, dveře, okna i střecha kapličky.</p>
+                    </div>
+                  </li>
+                  <li class="timeline-item reveal">
+                    <time datetime="1942">1942–1949</time>
+                    <div>
+                      <h4>Druhá rekvizice a náhrada zvonu</h4>
+                      <p>Za druhé světové války byl zvon znovu zrekvírován. Nový zvon pořídil roku 1949 Otakar Přibyl.</p>
+                    </div>
+                  </li>
+                  <li class="timeline-item reveal">
+                    <time datetime="2004">2004–2005</time>
+                    <div>
+                      <h4>Novodobá rekonstrukce</h4>
+                      <p>Kaplička prošla poslední uváděnou rekonstrukcí, která se dotkla mimo jiné oken a dveří.</p>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+    
+              <div class="history-sources">
+                <p>Podklady k časové ose: <a href="https://cs.wikipedia.org/wiki/Kolole%C4%8D" target="_blank" rel="noreferrer">Wikipedie</a> a <a href="https://www.hrady.cz/kaple-kololec-litomerice" target="_blank" rel="noreferrer">Hrady.cz</a>.</p>
+              </div>
+    
+              <div class="personalities" aria-labelledby="personalities-title">
+                <div>
+                  <p class="section-kicker">Osobnosti</p>
+                  <h3 id="personalities-title">Rodáci z Kololeče</h3>
+                </div>
+                <div class="personality-grid">
+                  <article class="personality-card reveal">
+                    <span>1823–1900</span>
+                    <h4>František Demel</h4>
+                    <p>Římskokatolický duchovní narozený v Kololeči.</p>
+                  </article>
+                  <article class="personality-card reveal">
+                    <span>1863–1916</span>
+                    <h4>Erhard Lipka</h4>
+                    <p>Pedagog a politik, který působil také jako poslanec Českého zemského sněmu a Říšské rady.</p>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </section>
+    
+          <section class="section landmarks" id="pamatky" aria-labelledby="landmarks-title">
+            <div class="shell">
+              <p class="section-kicker">Pamětihodnosti</p>
+              <div class="section-heading-row">
+                <h2 id="landmarks-title">Místa, která tvoří náves</h2>
+                <p>Dvě drobné památky připomínají historii i charakter obce.</p>
+              </div>
+    
+              <div class="landmark-grid">
+                <article class="landmark-card reveal">
+                  <div class="landmark-image-wrap">
+                    <img src="/assets/kololec-kaplicka.jpg" alt="Kaplička na návsi v Kololeči" loading="lazy" />
+                  </div>
+                  <div class="landmark-card-copy">
+                    <span class="card-number">01</span>
+                    <h3>Kaplička</h3>
+                    <p>Drobná sakrální stavba stojí přímo na návsi a tvoří přirozený střed vesnice.</p>
+                  </div>
+                </article>
+    
+                <article class="landmark-card reveal">
+                  <div class="landmark-image-wrap">
+                    <img src="/assets/kololec-jan-nepomucky.jpg" alt="Socha svatého Jana Nepomuckého v Kololeči" loading="lazy" />
+                  </div>
+                  <div class="landmark-card-copy">
+                    <span class="card-number">02</span>
+                    <h3>Socha svatého Jana Nepomuckého</h3>
+                    <p>Kamenná socha na zdobeném podstavci patří mezi místní pamětihodnosti.</p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+    
+          <section class="section gallery" id="galerie" aria-labelledby="gallery-title">
+            <div class="shell">
+              <p class="section-kicker">Galerie</p>
+              <div class="section-heading-row">
+                <h2 id="gallery-title">Několik pohledů na Kololeč</h2>
+                <p>Fotografie zachycují náves a její nejvýraznější místa.</p>
+              </div>
+              <div class="gallery-grid">
+                <a class="gallery-item gallery-wide reveal" href="/assets/kololec-naves.jpg" target="_blank">
+                  <img src="/assets/kololec-naves.jpg" alt="Náves v Kololeči" loading="lazy" />
+                  <span>Náves a výhled ke Košťálovu</span>
+                </a>
+                <a class="gallery-item gallery-tall reveal" href="/assets/kololec-kaplicka.jpg" target="_blank">
+                  <img src="/assets/kololec-kaplicka.jpg" alt="Kaplička v Kololeči" loading="lazy" />
+                  <span>Kaplička</span>
+                </a>
+                <a class="gallery-item reveal" href="/assets/kololec-jan-nepomucky.jpg" target="_blank">
+                  <img src="/assets/kololec-jan-nepomucky.jpg" alt="Socha svatého Jana Nepomuckého" loading="lazy" />
+                  <span>Socha svatého Jana Nepomuckého</span>
+                </a>
+                <a class="gallery-item reveal" href="/assets/kololec-odpocivadlo.jpg" target="_blank">
+                  <img src="/assets/kololec-odpocivadlo.jpg" alt="Odpočívadlo na návsi" loading="lazy" />
+                  <span>Odpočívadlo na návsi</span>
+                </a>
+              </div>
+            </div>
+          </section>
+    
+          <section class="section archive-preview" id="archivni-fotografie" aria-labelledby="archive-preview-title">
+            <div class="shell">
+              <p class="section-kicker">Archivní výběr</p>
+              <div class="section-heading-row">
+                <h2 id="archive-preview-title">Ze starého webu osadního výboru</h2>
+                <p>Malý výběr obrázků a fotografií převedených ze starého webu. Celý archiv obsahuje texty, odkazy, fotografie akcí, historické snímky i materiály ke Kololeči v Kosovu.</p>
+              </div>
+    
+              <div class="archive-preview-grid">
+                <a class="archive-preview-item reveal" href="/assets/archive/uvod-stareho-webu-1.jpg" target="_blank">
+                  <img src="/assets/archive/uvod-stareho-webu-2.jpg" alt="Kololeč v pohledu Bedřicha Tomáška" loading="lazy" />
+                  <span>Kresba Bedřicha Tomáška</span>
+                </a>
+                <a class="archive-preview-item reveal" href="/assets/archive/uvod-stareho-webu-9.jpg" target="_blank">
+                  <img src="/assets/archive/uvod-stareho-webu-10.jpg" alt="Vlajka Kololeče" loading="lazy" />
+                  <span>Vlajka Kololeče</span>
+                </a>
+                <a class="archive-preview-item reveal" href="/assets/archive/uvod-stareho-webu-11.jpg" target="_blank">
+                  <img src="/assets/archive/uvod-stareho-webu-12.jpg" alt="Erb Kololeče" loading="lazy" />
+                  <span>Erb Kololeče</span>
+                </a>
+                <a class="archive-preview-item reveal" href="/assets/archive/historicke-fotografie-113.jpg" target="_blank">
+                  <img src="/assets/archive/historicke-fotografie-114.jpg" alt="Historická pohlednice z Kololeče" loading="lazy" />
+                  <span>Historická pohlednice</span>
+                </a>
+                <a class="archive-preview-item reveal" href="/assets/archive/historicke-fotografie-121.jpg" target="_blank">
+                  <img src="/assets/archive/historicke-fotografie-122.jpg" alt="Kololeč a Košťálov na archivní fotografii" loading="lazy" />
+                  <span>Kololeč a Košťálov</span>
+                </a>
+                <a class="archive-preview-item reveal" href="/assets/archive/foto-z-akci-a-udalosti-ze-zivota-obce-25.jpg" target="_blank">
+                  <img src="/assets/archive/foto-z-akci-a-udalosti-ze-zivota-obce-25.jpg" alt="Archivní fotografie z akce v Kololeči" loading="lazy" />
+                  <span>Foto z obecních akcí</span>
+                </a>
+              </div>
+            </div>
+          </section>
+    
+          <section class="section nearby" id="okoli" aria-labelledby="nearby-title">
+            <div class="shell">
+              <p class="section-kicker">V okolí</p>
+              <div class="section-heading-row">
+                <h2 id="nearby-title">Co najdete nedaleko Kololeče</h2>
+                <p>Kololeč je dobrý výchozí bod pro krátké procházky, výhledy i výlety po Českém středohoří.</p>
+              </div>
+    
+              <div class="nearby-grid">
+                <article class="nearby-card reveal">
+                  <span class="nearby-tag">Výhledy</span>
+                  <h3>Košťálov</h3>
+                  <p>Zřícenina hradu na výrazném vrchu nad Třebenicemi patří k nejhezčím orientačním bodům v krajině.</p>
+                </article>
+                <article class="nearby-card reveal">
+                  <span class="nearby-tag">Město</span>
+                  <h3>Třebenice</h3>
+                  <p>Historické město jen kousek od obce nabízí základní služby, muzeum českého granátu a napojení na další trasy.</p>
+                </article>
+                <article class="nearby-card reveal">
+                  <span class="nearby-tag">Výlet</span>
+                  <h3>Hazmburk</h3>
+                  <p>Dominantní dvojice věží láká na delší výlet za výhledy přes dolní Poohří a kopce Českého středohoří.</p>
+                </article>
+                <article class="nearby-card reveal">
+                  <span class="nearby-tag">Krajina</span>
+                  <h3>České středohoří</h3>
+                  <p>Okolní louky, sady a sopečné vrchy se hodí pro pomalé procházky, cyklistiku i nenáročné fotografování krajiny.</p>
+                </article>
+              </div>
+            </div>
+          </section>
+    
+          <section class="section map-section" id="mapa" aria-labelledby="map-title">
+            <div class="shell map-grid">
+              <div class="map-copy">
+                <p class="section-kicker">Mapa</p>
+                <h2 id="map-title">Kde najdete Kololeč</h2>
+                <p>Kololeč leží západně od Třebenic v okrese Litoměřice. Mapa ukazuje širší území obce a nejbližší okolí.</p>
+                <dl class="location-list">
+                  <div>
+                    <dt>Souřadnice</dt>
+                    <dd>50°28′42″ s. š., 13°58′33″ v. d.</dd>
+                  </div>
+                  <div>
+                    <dt>Správní celek</dt>
+                    <dd>Třebenice · okres Litoměřice · Ústecký kraj</dd>
+                  </div>
+                </dl>
+                <div class="map-actions">
+                  <a class="button button-primary" href="https://mapy.com/en/turisticka?q=kololec&amp;source=ward&amp;id=11421&amp;ds=2&amp;x=13.9714202&amp;y=50.4747843&amp;z=15" target="_blank" rel="noreferrer">Otevřít na Mapy.com</a>
+                  <a class="button button-outline" href="https://maps.app.goo.gl/igyk8djasZppbJ6r6" target="_blank" rel="noreferrer">Otevřít na Google Maps</a>
+                  <a class="button button-outline" href="https://www.openstreetmap.org/relation/435822" target="_blank" rel="noreferrer">Otevřít na OpenStreetMap</a>
+                </div>
+              </div>
+              <div class="map-frame reveal">
+                <div id="kololec-map" class="leaflet-map" aria-label="Turistická mapa Kololeče"></div>
+              </div>
+            </div>
+          </section>
+    
+          <section class="links-section" aria-labelledby="links-title">
+            <div class="shell links-wrap">
+              <div>
+                <p class="section-kicker">Užitečné odkazy</p>
+                <h2 id="links-title">Více informací</h2>
+              </div>
+              <div class="links-grid">
+                <a href="https://www.mesto-trebenice.cz/" target="_blank" rel="noreferrer">
+                  <span>Město Třebenice</span>
+                  <small>oficiální web</small>
+                </a>
+                <a href="https://cs.wikipedia.org/wiki/Kolole%C4%8D" target="_blank" rel="noreferrer">
+                  <span>Kololeč na Wikipedii</span>
+                  <small>základní informace</small>
+                </a>
+                <a href="https://commons.wikimedia.org/wiki/Category:Kolole%C4%8D" target="_blank" rel="noreferrer">
+                  <span>Wikimedia Commons</span>
+                  <small>další fotografie</small>
+                </a>
+                <a href="/archive.html">
+                  <span>Archiv osadního výboru</span>
+                  <small>starý web Kololeče</small>
+                </a>
+              </div>
+            </div>
+          </section>
+  </main>
+</BaseLayout>

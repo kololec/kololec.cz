@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArchiveSection from '../components/ArchiveSection.astro';
+import { archiveSections } from '../data/archiveSections.mjs';
+
+const navItems = [
+  { href: '/#o-obci', label: 'O obci' },
+  { href: '/#historie', label: 'Historie' },
+  { href: '/#mapa', label: 'Mapa' },
+  { href: '#obsah', label: 'Archiv OVK' },
+];
+---
+
+<BaseLayout
+  title="Archiv osadního výboru Kololeč"
+  description="Archivní obsah starého webu osadního výboru Kololeč převedený do nového webu."
+  navItems={navItems}
+  bodyClass="archive-page"
+  headerSolid
+>
+  <main id="obsah">
+    <section class="archive-hero">
+      <div class="shell">
+        <p class="section-kicker">Archiv osadního výboru</p>
+        <h1>Archiv Kololeče</h1>
+        <p>Texty, fotografie, události a odkazy ze starého webu osadního výboru jsou převedené do nové podoby webu. Slouží jako uchovaný přehled obecních aktivit, historie a dokumentovaných vzpomínek.</p>
+      </div>
+    </section>
+
+    <section class="archive-index section">
+      <div class="shell archive-index-grid">
+        {archiveSections.map((section) => <a href={`#${section.id}`}>{section.title}</a>)}
+      </div>
+    </section>
+
+    <section class="archive-content section">
+      <div class="shell archive-stack">
+        {archiveSections.map((section) => <ArchiveSection section={section} />)}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

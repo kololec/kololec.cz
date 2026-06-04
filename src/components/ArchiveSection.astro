@@ -1,0 +1,10 @@
+---
+const { section } = Astro.props;
+---
+
+<article class="archive-entry" id={section.id}>
+  <div class="archive-entry-heading">
+    <h2>{section.title}</h2>
+  </div>
+  <div class="archive-body" set:html={section.html}></div>
+</article>

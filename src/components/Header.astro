@@ -1,0 +1,36 @@
+---
+const { navItems = [], scrollTopBrand = false, solid = false } = Astro.props;
+---
+
+<header class:list={['site-header', { scrolled: solid }]} id="nahoru" data-solid-header={solid ? 'true' : undefined}>
+  <div class="shell nav-wrap">
+    {
+      scrollTopBrand ? (
+        <a class="brand" href="#nahoru" data-scroll-top aria-label="Kololeč - úvodní stránka">
+          <span class="brand-mark" aria-hidden="true">K</span>
+          <span class="brand-copy">
+            <strong>Kololeč</strong>
+            <small>část města Třebenice</small>
+          </span>
+        </a>
+      ) : (
+        <a class="brand" href="/" aria-label="Kololeč - úvodní stránka">
+          <span class="brand-mark" aria-hidden="true">K</span>
+          <span class="brand-copy">
+            <strong>Kololeč</strong>
+            <small>část města Třebenice</small>
+          </span>
+        </a>
+      )
+    }
+
+    <button class="menu-toggle" type="button" aria-controls="hlavni-menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+      <span class="sr-only">Otevřít menu</span>
+    </button>
+
+    <nav class="main-nav" id="hlavni-menu" aria-label="Hlavní navigace">
+      {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+  </div>
+</header>

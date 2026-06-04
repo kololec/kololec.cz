@@ -1,0 +1,29 @@
+---
+const { scrollTopBrand = false } = Astro.props;
+---
+
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div>
+      {
+        scrollTopBrand ? (
+          <a class="brand footer-brand" href="#nahoru" data-scroll-top>
+            <span class="brand-mark" aria-hidden="true">K</span>
+            <span class="brand-copy"><strong>Kololeč</strong><small>část města Třebenice</small></span>
+          </a>
+        ) : (
+          <a class="brand footer-brand" href="/">
+            <span class="brand-mark" aria-hidden="true">K</span>
+            <span class="brand-copy"><strong>Kololeč</strong><small>část města Třebenice</small></span>
+          </a>
+        )
+      }
+      <p>Jednoduchá neoficiální prezentační stránka obce.</p>
+    </div>
+    <div class="footer-notes">
+      <p>Textové podklady: <a href="https://cs.wikipedia.org/wiki/Kolole%C4%8D" target="_blank" rel="noreferrer">Wikipedie</a> a <a href="https://www.hrady.cz/kaple-kololec-litomerice" target="_blank" rel="noreferrer">Hrady.cz</a>.</p>
+      <p>Fotografie: <a href="https://commons.wikimedia.org/wiki/User:Gortyna" target="_blank" rel="noreferrer">Gortyna</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.cs" target="_blank" rel="noreferrer">CC BY-SA 4.0</a>. Obrázky byly pro web zmenšeny.</p>
+      <p>Archiv: <a href="/archive.html">převedený obsah starého webu osadního výboru</a>.</p>
+    </div>
+  </div>
+</footer>

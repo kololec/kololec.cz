@@ -1,28 +1,35 @@
 const header = document.querySelector('.site-header');
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.main-nav');
+const solidHeader = header?.hasAttribute('data-solid-header') ?? false;
 
-const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 24);
+const updateHeader = () => {
+  if (!header) return;
+  header.classList.toggle('scrolled', solidHeader || window.scrollY > 24);
+};
+
 updateHeader();
 window.addEventListener('scroll', updateHeader, { passive: true });
 
-toggle.addEventListener('click', () => {
-  const open = menu.classList.toggle('open');
-  toggle.setAttribute('aria-expanded', String(open));
-});
-
-menu.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    menu.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
+if (toggle && menu) {
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
   });
-});
+
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
 
 document.querySelectorAll('[data-scroll-top]').forEach((link) => {
   link.addEventListener('click', (event) => {
     event.preventDefault();
-    menu.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
+    menu?.classList.remove('open');
+    toggle?.setAttribute('aria-expanded', 'false');
     history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
