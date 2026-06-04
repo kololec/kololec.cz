@@ -18,6 +18,16 @@ menu.querySelectorAll('a').forEach((link) => {
   });
 });
 
+document.querySelectorAll('[data-scroll-top]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    menu.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
