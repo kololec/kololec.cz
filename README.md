@@ -4,13 +4,13 @@ Jednostránková prezentační stránka vesnice Kololeč. Nevyžaduje build ani 
 
 ## Lokální spuštění
 
-Otevřete `index.html` přímo v prohlížeči, nebo ve složce spusťte jednoduchý HTTP server:
+Otevřete `index.html` přímo v prohlížeči, nebo ve složce spusťte lokální náhled s live reloadem:
 
 ```bash
-python3 -m http.server 8080
+make preview
 ```
 
-Poté navštivte `http://localhost:8080`.
+Poté navštivte `http://localhost:8080`. Při úpravě souborů se stránka automaticky obnoví.
 
 ## Nasazení
 
