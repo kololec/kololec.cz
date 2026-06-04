@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+import { subpageNav } from '../data/nav.mjs';
+
+const posts = (await getCollection('udalosti')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<BaseLayout
+  title="Události – Kololeč"
+  description="Akce a události ze života obce Kololeč."
+  navItems={subpageNav}
+  bodyClass="archive-page"
+  headerSolid
+>
+  <main id="obsah">
+    <section class="archive-hero">
+      <div class="shell">
+        <p class="section-kicker">Život v obci</p>
+        <h1>Události</h1>
+        <p>Akce a události ze života obce Kololeč.</p>
+      </div>
+    </section>
+
+    <section class="section post-list-section">
+      <div class="shell">
+        <ol class="feed-list post-list-full">
+          {posts.map((post) => <PostCard post={post} base="/udalosti" />)}
+        </ol>
+        <p class="post-back"><a href="/#zivot">← Zpět na úvodní stránku</a></p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

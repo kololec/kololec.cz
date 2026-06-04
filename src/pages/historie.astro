@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { subpageNav } from '../data/nav.mjs';
+
+const milestones = [
+  { date: '1228–1233', title: 'Nejstarší listiny kraje', text: 'V listinách abatyše kláštera sv. Jiří v Praze se k Litoměřické župě uvádějí okolní obce (Chodovlice, Třebenice a další).' },
+  { date: '1364', title: 'První zmínka o Kololeči', text: 'Podle Vladivoje Tomka („Dějiny Prahy“) se k obcím kláštera svatojířského připojuje i Kololeč.' },
+  { date: '1436', title: 'Pod košťálovským panstvím', text: 'Obec, dosud majetek svatojířského kláštera, byla císařem Zikmundem zastavena šlechtici Janu Kaplířovi ze Sulevic, pánu na Košťálově.' },
+  { date: '1512', title: 'Vinařství pod Kozími horkami', text: 'Nejstarší zápis o vinicích, které náležely 32 majitelům. Od roku 1689 začaly vinice pustnout.' },
+  { date: 'kolem 1800', title: 'Vznik kapličky', text: 'Na návsi byla postavena kaplička; ze stejné doby pochází pravděpodobně i socha svatého Jana Nepomuckého.' },
+  { date: '1884', title: 'První doložená oprava kapličky', text: 'Za starosty Josefa Vlasáka opravu provedli tesař František Brabec z Kololeče a klempíř Josef Kalous z Třebenic. Do kopule byly vloženy dokumenty.' },
+  { date: 'kolem 1890', title: 'Požár kovárny', text: 'Vyhořela kovárna, která stála na dnešním pozemku Martinců; kovářem byl pan Hacmac.' },
+  { date: '1901', title: 'Velká povodeň', text: 'Obec podle ústního podání starých občanů postihla veliká povodeň.' },
+  { date: '1914–1918', title: 'První světová válka', text: 'Z obce bylo mobilizováno mnoho mužů. Několik občanů padlo nebo bylo nezvěstných, zajatci v Rusku se zapojili do legií a vrátili se v roce 1918.' },
+  { date: '1920–1921', title: 'Nový zvon do kapličky', text: 'Původní zvon byl za války zrekvírován. Ze sbírky občanů (1202 Kč) byl pořízen nový a 5. června 1921 slavnostně vysvěcen.' },
+  { date: '1921', title: 'Založena obecní kronika', text: 'Podle zákona o pamětních knihách obcí byla 9. června 1921 založena kronika obce Kololeč.' },
+  { date: '1927', title: 'Obecní knihovna', text: 'Vznikla obecní knihovna s 48 knihami; obec na nákup knih vyčlenila 100 Kč.' },
+  { date: '1928', title: 'Ochotníci a lípa na návsi', text: 'František Hacmac daroval obci lípu vysazenou před domem čp. 3. Vznikl také „Kroužek ochotníků“, který pořádal divadla, kabarety a staročeské máje.' },
+  { date: '1930', title: 'Mateřská školka', text: 'V obci byla zřízena mateřská školka; učitelkou byla Zdena Tatarová z Třebenic.' },
+  { date: '1933', title: 'Další oprava kapličky', text: 'Sbírka mezi občany umožnila opravu oken, dveří, zdí a střechy kapličky.' },
+  { date: '1935', title: 'Státní silnice přes obec', text: 'Byla postavena státní silnice přes Kololeč; Kololečský vrch byl snížen o 160 cm a vozovka dostala asfaltový povrch.' },
+  { date: '1938', title: 'Pouť a pohraniční kontrola', text: 'Konala se tradiční Kololečská pouť. Po zabrání Sudet byla na silnici do Podsedic zřízena pohraniční pasová kontrola.' },
+  { date: '1941', title: 'Živelní pohroma', text: '28. května se strhla veliká bouře s krupobitím a průtrží mračen. Voda splachovala půdu i úrodu a způsobila velké škody.' },
+  { date: '1942', title: 'Druhá rekvizice zvonu', text: 'Zvon byl znovu odebrán pro zbrojní výrobu. Samospráva obce byla zrušena a Kololeč se stala městskou částí Třebenic.' },
+  { date: '1945–1946', title: 'Odsun německých obyvatel', text: 'Z obce byli odsunuti občané německé národnosti a nad jejich majetky převzali národní správu někteří občané.' },
+  { date: '1946', title: 'Osamostatnění obce', text: 'Na přání občanů došlo 23. ledna 1946 ke zpětnému osamostatnění obce a odloučení od Třebenic.' },
+  { date: '1948', title: 'Elektrifikace a rozhlas', text: 'V červnu byla zahájena elektrifikace; občané si sami postavili transformátor. Zaveden byl i místní rozhlas.' },
+  { date: '1949', title: 'Třetí zvon', text: 'Otakar Přibyl, vnuk Josefa Tomáška, koupil a přivezl do kapličky nový zvon.' },
+  { date: '1954', title: 'První televizor v obci', text: 'První televizor zakoupil pan Antonín Čejka čp. 42.' },
+  { date: '1960', title: 'Opět část Třebenic', text: 'Došlo k dalšímu sloučení s Třebenicemi; místo národního výboru byl ustanoven Občanský výbor.' },
+  { date: '1962–1964', title: 'Požární nádrž', text: 'V obci byla vybudována požární nádrž.' },
+  { date: '1966', title: 'Hostinec a prodejna', text: 'Byla zahájena přestavba domu čp. 17 na pohostinství a prodejnu Jednoty.' },
+  { date: '1975', title: 'Vodovod', text: 'Vodovod byl vybudován v akci „Z“; zemní stroj bezplatně zapůjčila Secheza Lovosice.' },
+  { date: '1978', title: 'Kanalizace', text: 'O tři roky později byla, opět v akci „Z“, vybudována kanalizace.' },
+  { date: '1996–2008', title: 'Léta bez samosprávy', text: 'Občanský výbor ukončil činnost a obec až do roku 2008 neměla samosprávný orgán, což se projevilo na jejím chátrání.' },
+  { date: '2004–2005', title: 'Rekonstrukce kapličky', text: 'Proběhla rekonstrukce oken, dveří, kopule, střechy i kříže; dokumenty v kopuli byly okopírovány a doplněny o současné.' },
+  { date: '2008', title: 'Vznik osadního výboru', text: 'Z iniciativy kololečských žen byl 29. září 2008 ustanoven osadní výbor – začala nová etapa života obce.' },
+  { date: '2010', title: 'Web osadního výboru', text: 'Vznikla internetová stránka osadního výboru, jejíž obsah je dnes zachovaný v tomto novém webu.' },
+];
+
+const chroniclers = [
+  { years: '1921–1928', name: 'František Malý' },
+  { years: '1928–1940', name: 'Anežka Hrubešová' },
+  { years: '1940–1948', name: 'pamětní kniha byla uložena' },
+  { years: '1948–1950', name: 'Eliška Čapková (provd. Hyrčová)' },
+  { years: '1950–1982', name: 'Bedřich Tomášek' },
+  { years: '1982–2010', name: 'kronika nebyla vedena' },
+];
+
+const photos = [
+  { id: 113, alt: 'Pohlednice z Kololeče z let 1900–1910', caption: 'Pohlednice z Kololeče (1900–1910)' },
+  { id: 115, alt: 'Náves Kololeče za kapličkou na dobovém snímku', caption: 'Náves za kapličkou' },
+  { id: 91, alt: 'Kololeč na dobové kresbě s hradem Košťálov', caption: 'Kololeč na dobové kresbě' },
+  { id: 117, alt: 'Dům čp. 17 – zájezdní hospoda v Kololeči', caption: 'Dům čp. 17 – zájezdní hospoda' },
+  { id: 109, alt: 'Skupina kololečských sousedů před hospodou', caption: 'Sousedé před hospodou' },
+  { id: 103, alt: 'Kololečské děti s učitelkou na dobové fotografii', caption: 'Děti z Kololeče' },
+  { id: 111, alt: 'Kololečské děti na dobové fotografii', caption: 'Kololečské děti' },
+  { id: 95, alt: 'Pohřební průvod v Kololeči na dobové fotografii', caption: 'Pohřební průvod' },
+];
+---
+
+<BaseLayout
+  title="Historie Kololeče"
+  description="Dějiny obce Kololeč od nejstarších zmínek ve 14. století po dnešek – časová osa, kronikáři, osobnosti a dobové fotografie."
+  navItems={subpageNav}
+  bodyClass="archive-page history-page"
+  headerSolid
+>
+  <main id="obsah">
+    <section class="archive-hero">
+      <div class="shell">
+        <p class="section-kicker">Historie</p>
+        <h1>Historie Kololeče</h1>
+        <p>Dějiny obce sahají až do středověku. Následující přehled vychází ze záznamů obecní kroniky a poznámek kronikáře Bedřicha Tomáška, shromážděných osadním výborem.</p>
+      </div>
+    </section>
+
+    <section class="section history-origin">
+      <div class="shell story-grid">
+        <div class="story-copy">
+          <p class="section-kicker">Původ jména</p>
+          <h2>Od „Kolovleče“ ke Kololeči</h2>
+          <p>Po staré silnici jezdili vozkové z Kololečského vrchu a museli zadní kola upevnit řetězem; pod kola dávali tzv. čubu, takže kolo bylo vlečeno a jelo smykem. Tím vznikl název Kolovleč, který se později změnil na Kololeč.</p>
+          <p>Podle pověsti i listin má obec dlouhou historii – nejstarší písemné zmínky o Kololeči se objevují už ve 14. století, kdy patřila pražskému klášteru sv. Jiří a posléze košťálovskému panství.</p>
+        </div>
+        <div class="story-image-wrap reveal">
+          <img src="/assets/archive/historicke-fotografie-91.jpg" alt="Kololeč na dobové kresbě s hradem Košťálov" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section history-timeline-section">
+      <div class="shell">
+        <p class="section-kicker">Časová osa</p>
+        <div class="section-heading-row">
+          <h2>Od středověku po dnešek</h2>
+          <p>Vybrané události z dějin obce zaznamenané v kronice a poznámkách kronikářů.</p>
+        </div>
+        <ol class="timeline" aria-label="Časová osa dějin Kololeče">
+          {milestones.map((m) => (
+            <li class="timeline-item reveal">
+              <time>{m.date}</time>
+              <div>
+                <h4>{m.title}</h4>
+                <p>{m.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="section history-people">
+      <div class="shell">
+        <div class="personalities" aria-labelledby="chroniclers-title">
+          <div>
+            <p class="section-kicker">Kronikáři</p>
+            <h3 id="chroniclers-title">Kdo vedl obecní kroniku</h3>
+          </div>
+          <ul class="chronicler-list">
+            {chroniclers.map((c) => (
+              <li><b>{c.years}</b><span>{c.name}</span></li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="story-grid figure-block">
+          <div class="story-image-wrap figure-portrait reveal">
+            <img src="/assets/archive/historie-kololece-90.jpg" alt="Portrét Msgre. Františka Demela" loading="lazy" />
+          </div>
+          <div class="story-copy">
+            <p class="section-kicker">Osobnost obce</p>
+            <h3>Msgre. František Demel</h3>
+            <p>(* 31. 10. 1823 Kololeč čp. 4 – † 26. 12. 1900 Litoměřice)</p>
+            <p>Český římskokatolický kněz, papežský prelát a infulovaný kanovník – senior litoměřické kapituly a dlouholetý generální vikář litoměřické diecéze. Na kněze byl vysvěcen roku 1848, po vysvěcení působil jako kaplan v Třebenicích.</p>
+            <p>Tři desetiletí byl generálním vikářem dvojjazyčné diecéze a podle svědectví jednal s českými i německými věřícími stejně dobře; kněžím byl rádcem a přítelem.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section history-photos">
+      <div class="shell">
+        <p class="section-kicker">Dobové snímky</p>
+        <div class="section-heading-row">
+          <h2>Kololeč na starých fotografiích</h2>
+          <p>Historické pohlednice a fotografie obce a jejích obyvatel.</p>
+        </div>
+        <div class="archive-preview-grid">
+          {photos.map((p) => (
+            <a class="archive-preview-item reveal" href={`/assets/archive/historicke-fotografie-${p.id}.jpg`} target="_blank">
+              <img src={`/assets/archive/historicke-fotografie-${p.id}.jpg`} alt={p.alt} loading="lazy" />
+              <span>{p.caption}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section history-sources-section">
+      <div class="shell">
+        <div class="history-sources">
+          <p>Prameny: záznamy kronikáře Bedřicha Tomáška a osadního výboru (<a href="https://web.archive.org/web/20240319152045/http://kololec.svet-stranek.cz/" target="_blank" rel="noreferrer">původní web ve Web Archive</a>), <a href="http://www.mesto-trebenice.cz/assets/File.ashx?id_org=16960&amp;id_dokumenty=85985" target="_blank" rel="noreferrer">Děje Třebenic</a> od Augustina Sedláčka, obec <a href="http://www.chodovlice.cz/assets/File.ashx?id_org=5224&amp;id_dokumenty=1015" target="_blank" rel="noreferrer">Chodovlice</a> a <a href="https://archivnimapy.cuzk.cz/uazk/pohledy/archiv.html" target="_blank" rel="noreferrer">císařské povinné otisky stabilního katastru</a>.</p>
+        </div>
+        <p class="history-back"><a href="/#historie">← Zpět na úvodní stránku</a></p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

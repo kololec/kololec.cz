@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { subpageNav } from '../data/nav.mjs';
+
+const { post, kicker, backHref, backLabel } = Astro.props;
+const dateFmt = new Intl.DateTimeFormat('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  title={`${post.data.title} – Kololeč`}
+  description={post.data.perex}
+  navItems={subpageNav}
+  bodyClass="archive-page"
+  headerSolid
+>
+  <main id="obsah">
+    <article class="post-detail">
+      <section class="archive-hero">
+        <div class="shell">
+          <p class="section-kicker">{kicker}</p>
+          <h1>{post.data.title}</h1>
+          <p class="post-meta">
+            <time datetime={post.data.date.toISOString().slice(0, 10)}>{dateFmt.format(post.data.date)}</time>
+          </p>
+        </div>
+      </section>
+
+      <section class="section post-body-section">
+        <div class="shell post-shell">
+          <div class="archive-body">
+            <slot />
+          </div>
+
+          {post.data.odkaz && (
+            <p class="post-odkaz">
+              <a class="button button-primary" href={post.data.odkaz} target="_blank" rel="noreferrer">
+                {post.data.odkazPopis ?? 'Více'}
+              </a>
+            </p>
+          )}
+
+          <p class="post-back"><a href={backHref}>← {backLabel}</a></p>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>

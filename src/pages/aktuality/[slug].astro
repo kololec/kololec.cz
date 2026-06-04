@@ -1,0 +1,16 @@
+---
+import { getCollection, render } from 'astro:content';
+import PostArticle from '../../components/PostArticle.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('aktuality');
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<PostArticle post={entry} kicker="Aktuality" backHref="/aktuality.html" backLabel="Všechny aktuality">
+  <Content />
+</PostArticle>

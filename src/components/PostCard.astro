@@ -1,0 +1,14 @@
+---
+const { post, base } = Astro.props;
+const dateFmt = new Intl.DateTimeFormat('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' });
+const href = `${base}/${post.id}.html`;
+---
+
+<li class="feed-item">
+  <a class="feed-card reveal" href={href}>
+    <time datetime={post.data.date.toISOString().slice(0, 10)}>{dateFmt.format(post.data.date)}</time>
+    <h4>{post.data.title}</h4>
+    <p>{post.data.perex}</p>
+    <span class="feed-card-cue">Číst více <span aria-hidden="true">→</span></span>
+  </a>
+</li>
