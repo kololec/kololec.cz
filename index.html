@@ -7,7 +7,9 @@
     <meta name="theme-color" content="#31533a" />
     <title>Kololeč — vesnice v Českém středohoří</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
   </head>
   <body>
     <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
@@ -296,10 +298,10 @@
                 <dd>Třebenice · okres Litoměřice · Ústecký kraj</dd>
               </div>
             </dl>
-            <a class="button button-primary" href="https://www.openstreetmap.org/?mlat=50.4783&amp;mlon=13.9758#map=16/50.4783/13.9758" target="_blank" rel="noreferrer">Otevřít mapu</a>
+            <a class="button button-primary" href="https://mapy.com/turisticka?x=13.9758&amp;y=50.4783&amp;z=16&amp;source=coor&amp;id=13.9758%2C50.4783" target="_blank" rel="noreferrer">Otevřít na Mapy.com</a>
           </div>
           <div class="map-frame reveal">
-            <iframe title="Mapa Kololeče" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=13.9664%2C50.4734%2C13.9840%2C50.4826&amp;layer=mapnik&amp;marker=50.4783%2C13.9758"></iframe>
+            <div id="kololec-map" class="leaflet-map" aria-label="Turistická mapa Kololeče"></div>
           </div>
         </div>
       </section>

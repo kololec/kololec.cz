@@ -12,6 +12,14 @@ make preview
 
 Poté navštivte `http://localhost:8080`. Při úpravě souborů se stránka automaticky obnoví.
 
+## Mapa
+
+Mapa používá Leaflet a dlaždice Mapy.com REST API. API klíč je nastavený přímo v `script.js`:
+
+```js
+const API_KEY = 'vas-api-klic';
+```
+
 ## Nasazení
 
 Celou složku lze nahrát na libovolný statický hosting nebo do adresáře obsluhovaného Caddy/Nginx.

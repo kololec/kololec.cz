@@ -144,7 +144,8 @@ h3 { font-size: 32px; letter-spacing: -0.04em; }
 dt { color: var(--forest-soft); font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
 dd { margin: 0; color: #425047; }
 .map-frame { min-height: 510px; overflow: hidden; border-radius: var(--radius); box-shadow: var(--shadow); }
-.map-frame iframe { width: 100%; height: 510px; border: 0; }
+.leaflet-map { min-height: 510px; height: 510px; background: #dce5da; }
+.leaflet-control-layers, .leaflet-bar a { font-family: "DM Sans", system-ui, sans-serif; }
 
 .links-section { padding: 88px 0; color: #fff; background: var(--forest-deep); }
 .links-wrap { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: 50px; align-items: center; }
@@ -179,7 +180,7 @@ dd { margin: 0; color: #425047; }
   .landmark-grid { grid-template-columns: 1fr; }
   .nearby-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .nearby-card { min-height: 260px; }
-  .map-frame, .map-frame iframe { min-height: 390px; height: 390px; }
+  .map-frame, .leaflet-map { min-height: 390px; height: 390px; }
   .gallery-grid { grid-auto-rows: 145px; }
 }
 
@@ -211,7 +212,7 @@ dd { margin: 0; color: #425047; }
   .nearby-grid { grid-template-columns: 1fr; }
   .nearby-card { min-height: 230px; padding: 23px; }
   .location-list div { grid-template-columns: 1fr; gap: 4px; }
-  .map-frame, .map-frame iframe { min-height: 320px; height: 320px; }
+  .map-frame, .leaflet-map { min-height: 320px; height: 320px; }
   .links-section { padding: 70px 0; }
 }
 
