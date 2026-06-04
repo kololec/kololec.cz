@@ -15,10 +15,10 @@ const udalostiPast = udalosti.filter((e) => e.data.date < now);
 
 const navItems = [
   { href: '#o-obci', label: 'O obci' },
+  { href: '#historie', label: 'Historie' },
+  { href: '#pamatky', label: 'Místa' },
   { href: '#zivot', label: 'Život' },
   { href: '/prakticke/', label: 'Praktické' },
-  { href: '#historie', label: 'Historie' },
-  { href: '#pamatky', label: 'Památky' },
   { href: '#galerie', label: 'Galerie' },
   { href: '#okoli', label: 'V okolí' },
   { href: '#mapa', label: 'Mapa' },
@@ -108,6 +108,86 @@ const navItems = [
             </div>
           </section>
     
+          <section class="section history history-teaser" id="historie" aria-labelledby="history-title">
+            <div class="shell">
+              <div class="story-grid history-teaser-grid">
+                <a class="history-photo reveal" href="/historie/">
+                  <img src="/assets/archive/historicke-fotografie-91.jpg" alt="Kololeč na dobové kresbě s hradem Košťálov" loading="lazy" />
+                </a>
+                <div class="story-copy">
+                  <p class="section-kicker">Historie</p>
+                  <h2 id="history-title">Příběh malé vsi napříč staletími</h2>
+                  <p>Od nejstarších zmínek ve 14. století přes kapličku na návsi a obě světové války až po obnovení osadního výboru. Celou časovou osu, kronikáře, osobnosti i dobové snímky najdete na samostatné stránce.</p>
+                  <a class="button button-primary history-teaser-cta" href="/historie/">Prozkoumat historii obce →</a>
+                </div>
+              </div>
+
+              <ol class="history-highlights">
+                <li class="history-highlight reveal">
+                  <strong>1364</strong>
+                  <span>první písemná zmínka o obci</span>
+                </li>
+                <li class="history-highlight reveal">
+                  <strong>1921</strong>
+                  <span>založena obecní kronika</span>
+                </li>
+                <li class="history-highlight reveal">
+                  <strong>1948</strong>
+                  <span>elektrifikace a místní rozhlas</span>
+                </li>
+                <li class="history-highlight reveal">
+                  <strong>2008</strong>
+                  <span>obnoven osadní výbor</span>
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <section class="section landmarks" id="pamatky" aria-labelledby="landmarks-title">
+            <div class="shell">
+              <p class="section-kicker">Místa</p>
+              <div class="section-heading-row">
+                <h2 id="landmarks-title">Místa, která tvoří náves</h2>
+                <p>Tři místa, která dávají návsi charakter a tvoří přirozené centrum sousedského života.</p>
+              </div>
+
+              <div class="landmark-grid">
+                <article class="landmark-card reveal">
+                  <div class="landmark-image-wrap">
+                    <img src="/assets/rajce-wintermans/kololec-426.jpg" alt="Kaplička na návsi v Kololeči" loading="lazy" />
+                  </div>
+                  <div class="landmark-card-copy">
+                    <span class="card-number">01</span>
+                    <h3>Kaplička</h3>
+                    <p>Drobná sakrální stavba stojí přímo na návsi a tvoří přirozený střed vesnice.</p>
+                  </div>
+                </article>
+
+                <article class="landmark-card reveal">
+                  <div class="landmark-image-wrap">
+                    <img src="/assets/rajce-wintermans/kololec-434.jpg" alt="Socha svatého Jana Nepomuckého v Kololeči" style="object-position: top" loading="lazy" />
+                  </div>
+                  <div class="landmark-card-copy">
+                    <span class="card-number">02</span>
+                    <h3>Socha sv. Jana Nepomuckého</h3>
+                    <p>Kamenná socha na zdobeném podstavci patří mezi místní pamětihodnosti.</p>
+                  </div>
+                </article>
+
+                <article class="landmark-card reveal">
+                  <div class="landmark-image-wrap">
+                    <img src="/assets/kololec-odpocivadlo.jpg" alt="Zastřešené odpočívadlo na návsi v Kololeči" loading="lazy" />
+                  </div>
+                  <div class="landmark-card-copy">
+                    <span class="card-number">03</span>
+                    <h3>Zastřešené odpočívadlo</h3>
+                    <p>Altán s lavicemi na návsi je centrem společenského dění – konají se tu brigády, slavnosti i sousedská posezení.</p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+
           <section class="section village-life" id="zivot" aria-labelledby="life-title">
             <div class="shell">
               <p class="section-kicker">Život v obci</p>
@@ -196,75 +276,6 @@ const navItems = [
                   </ol>
                   <a class="feed-all" href="/udalosti/">Všechny události →</a>
                 </section>
-              </div>
-            </div>
-          </section>
-    
-          <section class="section history history-teaser" id="historie" aria-labelledby="history-title">
-            <div class="shell">
-              <div class="story-grid history-teaser-grid">
-                <a class="history-photo reveal" href="/historie/">
-                  <img src="/assets/archive/historicke-fotografie-91.jpg" alt="Kololeč na dobové kresbě s hradem Košťálov" loading="lazy" />
-                </a>
-                <div class="story-copy">
-                  <p class="section-kicker">Historie</p>
-                  <h2 id="history-title">Příběh malé vsi napříč staletími</h2>
-                  <p>Od nejstarších zmínek ve 14. století přes kapličku na návsi a obě světové války až po obnovení osadního výboru. Celou časovou osu, kronikáře, osobnosti i dobové snímky najdete na samostatné stránce.</p>
-                  <a class="button button-primary history-teaser-cta" href="/historie/">Prozkoumat historii obce →</a>
-                </div>
-              </div>
-
-              <ol class="history-highlights">
-                <li class="history-highlight reveal">
-                  <strong>1364</strong>
-                  <span>první písemná zmínka o obci</span>
-                </li>
-                <li class="history-highlight reveal">
-                  <strong>1921</strong>
-                  <span>založena obecní kronika</span>
-                </li>
-                <li class="history-highlight reveal">
-                  <strong>1948</strong>
-                  <span>elektrifikace a místní rozhlas</span>
-                </li>
-                <li class="history-highlight reveal">
-                  <strong>2008</strong>
-                  <span>obnoven osadní výbor</span>
-                </li>
-              </ol>
-            </div>
-          </section>
-    
-          <section class="section landmarks" id="pamatky" aria-labelledby="landmarks-title">
-            <div class="shell">
-              <p class="section-kicker">Pamětihodnosti</p>
-              <div class="section-heading-row">
-                <h2 id="landmarks-title">Místa, která tvoří náves</h2>
-                <p>Dvě drobné památky připomínají historii i charakter obce.</p>
-              </div>
-    
-              <div class="landmark-grid">
-                <article class="landmark-card reveal">
-                  <div class="landmark-image-wrap">
-                    <img src="/assets/kololec-kaplicka.jpg" alt="Kaplička na návsi v Kololeči" loading="lazy" />
-                  </div>
-                  <div class="landmark-card-copy">
-                    <span class="card-number">01</span>
-                    <h3>Kaplička</h3>
-                    <p>Drobná sakrální stavba stojí přímo na návsi a tvoří přirozený střed vesnice.</p>
-                  </div>
-                </article>
-    
-                <article class="landmark-card reveal">
-                  <div class="landmark-image-wrap">
-                    <img src="/assets/kololec-jan-nepomucky.jpg" alt="Socha svatého Jana Nepomuckého v Kololeči" loading="lazy" />
-                  </div>
-                  <div class="landmark-card-copy">
-                    <span class="card-number">02</span>
-                    <h3>Socha svatého Jana Nepomuckého</h3>
-                    <p>Kamenná socha na zdobeném podstavci patří mezi místní pamětihodnosti.</p>
-                  </div>
-                </article>
               </div>
             </div>
           </section>
