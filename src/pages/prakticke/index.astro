@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { subpageNav } from '../../data/nav.mjs';
+
+const placeholder = 'Informace doplníme.';
+const preparing = 'Aktuální údaje připravujeme.';
+
+const practicalSections = [
+  {
+    title: 'Doprava',
+    intro: 'Základní přehled pro plánování cest z Kololeče a do okolí.',
+    items: [
+      ['Autobusové zastávky a jízdní řády', placeholder],
+      ['Vyhledání spojení', preparing],
+      ['Nejbližší vlakové spojení', placeholder],
+    ],
+    actions: [
+      { label: 'Vyhledat spojení', href: null },
+      { label: 'Zobrazit jízdní řád', href: null },
+    ],
+  },
+  {
+    title: 'Odpady',
+    intro: 'Svoz odpadu a místa pro odkládání jednotlivých druhů odpadu.',
+    items: [
+      ['Svoz komunálního odpadu', placeholder],
+      ['Tříděný odpad', placeholder],
+      ['Bioodpad', placeholder],
+      ['Velkoobjemový a nebezpečný odpad', preparing],
+      ['Sběrný dvůr', placeholder],
+    ],
+    actions: [
+      { label: 'Zobrazit informace o odpadech', href: null },
+    ],
+  },
+  {
+    title: 'Internet a mobilní signál',
+    intro: 'Dostupnost připojení se může lišit podle konkrétního domu a technických možností v místě.',
+    items: [
+      ['Dostupní internetoví poskytovatelé', preparing],
+      ['Dostupné technologie', 'Bezdrátové připojení, DSL, LTE nebo 5G - dostupnost ověříme podle konkrétních poskytovatelů.'],
+    ],
+    providers: [
+      { name: placeholder, technology: preparing, note: 'Doplníme po ověření dostupnosti.' },
+    ],
+  },
+  {
+    title: 'Voda a energie',
+    intro: 'Odstávky, poruchy a kontakty pro technickou infrastrukturu.',
+    items: [
+      ['Odstávky vody', placeholder],
+      ['Poruchy vody', placeholder],
+      ['Výpadky elektřiny', placeholder],
+      ['Veřejné osvětlení', placeholder],
+    ],
+    actions: [
+      { label: 'Zobrazit odstávky', href: null },
+      { label: 'Nahlásit poruchu', href: null },
+    ],
+  },
+  {
+    title: 'Služby v okolí',
+    intro: 'Základní služby jsou dostupné především v nedalekých Třebenicích.',
+    items: [
+      ['Obchod', placeholder],
+      ['Lékárna', placeholder],
+      ['Lékař', placeholder],
+      ['Pošta', placeholder],
+      ['Školy', placeholder],
+      ['Restaurace', placeholder],
+      ['Výdejní boxy', placeholder],
+      ['Sběrný dvůr', placeholder],
+    ],
+  },
+  {
+    title: 'Úřady a důležité kontakty',
+    intro: 'Odkazy na správu města, hlášení závad a krizové kontakty.',
+    items: [
+      ['Městský úřad Třebenice', 'Oficiální web města Třebenice.'],
+      ['Osadní výbor Kololeč', placeholder],
+      ['Úřední deska', placeholder],
+      ['Hlášení závad', placeholder],
+      ['Krizová telefonní čísla', '112 · jednotné evropské číslo tísňového volání'],
+    ],
+    actions: [
+      { label: 'Otevřít web města', href: 'https://www.mesto-trebenice.cz/' },
+      { label: 'Zobrazit úřední desku', href: null },
+    ],
+  },
+  {
+    title: 'Pro nové obyvatele a majitele nemovitostí',
+    intro: 'Základní orientace pro nové sousedy, vlastníky domů a pozemků.',
+    items: [
+      ['Katastrální mapa', 'Nahlížení do katastru nemovitostí pro katastrální území Kololeč.'],
+      ['Kód katastrálního území', '769584'],
+      ['Územní plán', placeholder],
+      ['Stavební úřad', placeholder],
+      ['Trvalý pobyt', placeholder],
+      ['Místní poplatky', placeholder],
+      ['Odpadové hospodářství', placeholder],
+    ],
+    actions: [
+      { label: 'Otevřít katastrální mapu', href: 'https://sgi-nahlizenidokn.cuzk.gov.cz/marushka/default.aspx?themeid=3&MarQueryId=6D2BCEB5&MarQParamCount=1&MarQParam0=769584&MarWindowName=Marushka' },
+      { label: 'Otevřít web města', href: 'https://www.mesto-trebenice.cz/' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Praktické informace | Kololeč"
+  description="Doprava, odpady, internet, služby v okolí a důležité kontakty pro obyvatele Kololeče."
+  navItems={subpageNav}
+  bodyClass="archive-page practical-page"
+  headerSolid
+>
+  <main id="obsah">
+    <section class="archive-hero practical-hero">
+      <div class="shell">
+        <p class="section-kicker">Praktický rozcestník</p>
+        <h1>Praktické informace</h1>
+        <p>Užitečné odkazy a kontakty pro každodenní život v Kololeči. Doprava, odpady, internet, služby v okolí i informace pro nové obyvatele na jednom místě.</p>
+      </div>
+    </section>
+
+    <section class="section practical-section" aria-label="Praktické informace podle témat">
+      <div class="shell practical-grid">
+        {practicalSections.map((section) => (
+          <article class="practical-card reveal">
+            <div class="practical-card-head">
+              <h2>{section.title}</h2>
+              <p>{section.intro}</p>
+            </div>
+
+            <dl class="practical-list">
+              {section.items.map(([term, detail]) => (
+                <div>
+                  <dt>{term}</dt>
+                  <dd>{detail}</dd>
+                </div>
+              ))}
+            </dl>
+
+            {section.providers && (
+              <div class="provider-table" role="table" aria-label="Přehled poskytovatelů internetu">
+                <div role="row" class="provider-table-head">
+                  <span role="columnheader">Poskytovatel</span>
+                  <span role="columnheader">Technologie</span>
+                  <span role="columnheader">Poznámka</span>
+                </div>
+                {section.providers.map((provider) => (
+                  <div role="row">
+                    <span role="cell">{provider.name}</span>
+                    <span role="cell">{provider.technology}</span>
+                    <span role="cell">{provider.note}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {section.actions && (
+              <div class="practical-actions">
+                {section.actions.map((action) => (
+                  action.href ? (
+                    <a class="button button-outline practical-button" href={action.href} target="_blank" rel="noreferrer">{action.label}</a>
+                  ) : (
+                    <span class="practical-placeholder">{action.label}: {preparing}</span>
+                  )
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

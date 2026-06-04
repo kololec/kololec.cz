@@ -16,6 +16,7 @@ const udalostiPast = udalosti.filter((e) => e.data.date < now);
 const navItems = [
   { href: '#o-obci', label: 'O obci' },
   { href: '#zivot', label: 'Život' },
+  { href: '/prakticke-informace/', label: 'Praktické' },
   { href: '#historie', label: 'Historie' },
   { href: '#pamatky', label: 'Památky' },
   { href: '#galerie', label: 'Galerie' },
@@ -133,6 +134,16 @@ const navItems = [
                 </article>
               </div>
 
+              <aside class="practical-callout reveal" aria-labelledby="practical-callout-title">
+                <div>
+                  <p class="section-kicker">Praktický rozcestník</p>
+                  <h3 id="practical-callout-title">Praktické informace pro každodenní život</h3>
+                  <p>Jízdní řády, svoz odpadu, dostupnost internetu, důležité kontakty a služby v okolí na jednom místě.</p>
+                  <small>Doprava · Odpady · Internet · Kontakty</small>
+                </div>
+                <a class="button button-outline" href="/prakticke-informace/">Praktické informace →</a>
+              </aside>
+
               <div class="zivot-feed">
                 <section class="feed-column" aria-labelledby="aktuality-title">
                   <div class="feed-head">
@@ -142,7 +153,7 @@ const navItems = [
                   <ol class="feed-list">
                     {aktuality.slice(0, 3).map((post) => <PostCard post={post} base="/aktuality" />)}
                   </ol>
-                  <a class="feed-all" href="/aktuality.html">Všechny aktuality →</a>
+                  <a class="feed-all" href="/aktuality/">Všechny aktuality →</a>
                 </section>
 
                 <section class="feed-column" aria-labelledby="udalosti-title">
@@ -164,7 +175,7 @@ const navItems = [
                   <ol class="feed-list">
                     {udalostiPast.slice(0, 3).map((post) => <PostCard post={post} base="/udalosti" />)}
                   </ol>
-                  <a class="feed-all" href="/udalosti.html">Všechny události →</a>
+                  <a class="feed-all" href="/udalosti/">Všechny události →</a>
                 </section>
               </div>
             </div>
@@ -173,14 +184,14 @@ const navItems = [
           <section class="section history history-teaser" id="historie" aria-labelledby="history-title">
             <div class="shell">
               <div class="story-grid history-teaser-grid">
-                <a class="history-photo reveal" href="/historie.html">
+                <a class="history-photo reveal" href="/historie/">
                   <img src="/assets/archive/historicke-fotografie-91.jpg" alt="Kololeč na dobové kresbě s hradem Košťálov" loading="lazy" />
                 </a>
                 <div class="story-copy">
                   <p class="section-kicker">Historie</p>
                   <h2 id="history-title">Příběh malé vsi napříč staletími</h2>
                   <p>Od nejstarších zmínek ve 14. století přes kapličku na návsi a obě světové války až po obnovení osadního výboru. Celou časovou osu, kronikáře, osobnosti i dobové snímky najdete na samostatné stránce.</p>
-                  <a class="button button-primary history-teaser-cta" href="/historie.html">Prozkoumat historii obce →</a>
+                  <a class="button button-primary history-teaser-cta" href="/historie/">Prozkoumat historii obce →</a>
                 </div>
               </div>
 

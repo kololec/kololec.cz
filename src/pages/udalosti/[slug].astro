@@ -11,6 +11,6 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<PostArticle post={entry} kicker="Události" backHref="/udalosti.html" backLabel="Všechny události">
+<PostArticle post={entry} kicker="Události" backHref="/udalosti/" backLabel="Všechny události">
   <Content />
 </PostArticle>

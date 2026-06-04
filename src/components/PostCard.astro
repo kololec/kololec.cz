@@ -1,7 +1,7 @@
 ---
 const { post, base } = Astro.props;
 const dateFmt = new Intl.DateTimeFormat('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' });
-const href = `${base}/${post.id}.html`;
+const href = `${base}/${post.id}/`;
 ---
 
 <li class="feed-item">
