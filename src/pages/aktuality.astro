@@ -7,6 +7,13 @@ import { subpageNav } from '../data/nav.mjs';
 const posts = (await getCollection('aktuality')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
+const postsByYear = Array.from(
+  posts.reduce((groups, post) => {
+    const year = post.data.date.getFullYear();
+    groups.set(year, [...(groups.get(year) ?? []), post]);
+    return groups;
+  }, new Map()),
+);
 ---
 
 <BaseLayout
@@ -27,9 +34,18 @@ const posts = (await getCollection('aktuality')).sort(
 
     <section class="section post-list-section">
       <div class="shell">
-        <ol class="feed-list post-list-full">
-          {posts.map((post) => <PostCard post={post} base="/aktuality" />)}
-        </ol>
+        <div class="post-year-stack">
+          {
+            postsByYear.map(([year, yearPosts]) => (
+              <section class="post-year-group" aria-labelledby={`aktuality-${year}`}>
+                <h2 id={`aktuality-${year}`}>{year}</h2>
+                <ol class="feed-list post-list-full">
+                  {yearPosts.map((post) => <PostCard post={post} base="/aktuality" />)}
+                </ol>
+              </section>
+            ))
+          }
+        </div>
         <p class="post-back"><a href="/#zivot">← Zpět na úvodní stránku</a></p>
       </div>
     </section>
