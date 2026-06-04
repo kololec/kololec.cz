@@ -198,7 +198,10 @@ h3 { font-size: 32px; letter-spacing: -0.04em; }
 /* Odpady – karty podle druhu odpadu */
 .waste-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 36px; }
 .waste-card { display: flex; flex-direction: column; padding: 26px 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); box-shadow: 0 12px 30px rgba(28, 48, 33, 0.05); }
-.waste-card h3 { font-size: 22px; letter-spacing: -0.02em; }
+.waste-card-head { display: flex; align-items: center; gap: 13px; margin-bottom: 4px; }
+.waste-icon { display: grid; flex: 0 0 auto; place-items: center; width: 42px; height: 42px; border-radius: 11px; color: var(--forest); background: var(--cream); }
+.waste-icon svg { width: 22px; height: 22px; }
+.waste-card h3 { font-size: 20px; letter-spacing: -0.02em; }
 .waste-card p { margin: 12px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
 .waste-link { margin-top: auto; padding-top: 16px; color: var(--forest); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; }
 .waste-link:hover, .waste-link:focus-visible { color: var(--forest-deep); }
@@ -315,6 +318,8 @@ h3 { font-size: 32px; letter-spacing: -0.04em; }
 .map-button { min-height: 40px; padding: 0 14px; font-size: 11px; letter-spacing: 0.08em; }
 .location-list { display: grid; gap: 12px; margin: 30px 0; }
 .location-list div { display: grid; grid-template-columns: 112px 1fr; gap: 15px; padding-top: 11px; border-top: 1px solid var(--line); }
+.location-list a { color: var(--forest); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; transition: color 180ms ease; }
+.location-list a:hover { color: var(--forest-deep); }
 dt { color: var(--forest-soft); font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
 dd { margin: 0; color: #425047; }
 .map-frame { min-height: 510px; overflow: hidden; border-radius: var(--radius); box-shadow: var(--shadow); }
@@ -448,6 +453,9 @@ dd { margin: 0; color: #425047; }
   .nearby-card { min-height: auto; padding: 0; }
   .nearby-content { padding: 20px; }
   .location-list div { grid-template-columns: 1fr; gap: 4px; }
+  .map-actions { gap: 6px; }
+  .map-actions-label { width: 100%; margin-bottom: 8px; margin-right: 0; }
+  .map-button { min-height: 36px; padding: 0 11px; font-size: 10px; }
   .map-frame, .leaflet-map { min-height: 320px; height: 320px; }
   .links-section { padding: 70px 0; }
   .lightbox { padding: 72px 12px 22px; }
