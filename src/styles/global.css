@@ -102,8 +102,10 @@ h3 { font-size: 32px; letter-spacing: -0.04em; }
 
 .village-life { background: var(--paper); }
 .life-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.life-card { min-height: 330px; padding: 28px; border: 1px solid var(--line); border-radius: 16px; background: var(--cream); }
-.life-card span { display: block; margin-bottom: 56px; color: var(--forest-soft); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+.life-card { display: flex; flex-direction: column; min-height: 330px; padding: 28px; border: 1px solid var(--line); border-radius: 16px; background: var(--cream); }
+.life-icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; margin-bottom: 24px; border-radius: 12px; background: rgba(49, 83, 58, 0.08); color: var(--forest); }
+.life-icon svg { width: 24px; height: 24px; }
+.life-card span { display: block; margin-bottom: 20px; color: var(--forest-soft); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
 .life-card h3 { font-size: clamp(28px, 3vw, 38px); }
 .life-card p { margin: 16px 0 0; color: var(--muted); }
 .practical-callout { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: center; margin-top: 18px; padding: 26px 28px; border: 1px solid var(--line); border-radius: 16px; background: rgba(247, 243, 233, 0.62); }
@@ -420,8 +422,8 @@ dd { margin: 0; color: #425047; }
   .fact-card strong { font-size: 35px; }
   .life-grid, .archive-preview-grid { grid-template-columns: 1fr; }
   .zivot-feed { grid-template-columns: 1fr; gap: 36px; }
-  .life-card { min-height: 260px; padding: 23px; }
-  .life-card span { margin-bottom: 38px; }
+  .life-card { min-height: auto; padding: 23px; }
+  .life-card span { margin-bottom: 18px; }
   .archive-callout, .practical-callout { padding: 23px; }
   .waste-grid { grid-template-columns: 1fr; }
   .practical-list div { grid-template-columns: 1fr; gap: 4px; }
