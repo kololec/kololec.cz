@@ -1,9 +1,5 @@
 export const subpageNav = [
-  { href: '/#o-obci', label: 'O obci' },
+  { href: '/', label: 'Hlavní stránka' },
   { href: '/historie/', label: 'Historie' },
-  { href: '/#zivot', label: 'Život' },
-  /*{ href: '/prakticke/', label: 'Praktické' },*/
-  { href: '/aktuality/', label: 'Aktuality' },
-  { href: '/udalosti/', label: 'Události' },
-  { href: '/#mapa', label: 'Mapa' },
+  { href: '/prakticke/', label: 'Praktické' },
 ];
