@@ -159,7 +159,25 @@ h3 { font-size: 32px; letter-spacing: -0.04em; }
 .practical-block-inner { display: grid; grid-template-columns: minmax(220px, 0.5fr) minmax(0, 1fr); gap: clamp(30px, 6vw, 80px); align-items: start; }
 .practical-block-head h2 { font-size: clamp(28px, 4vw, 44px); }
 .practical-block-head p { margin: 14px 0 0; color: var(--muted); }
-.practical-block-head a { color: var(--forest); font-weight: 700; }
+/* Shared inline link style for all text-embedded links on the Praktické page */
+.practical-block-head a,
+.transport-dest a,
+.transport-note a,
+.transport-tickets a,
+.utility-emergency-note a,
+.utility-price-note a,
+.utility-note a,
+.waste-card p a,
+.contacts-pairs a { color: var(--forest); font-weight: 700; text-decoration: none; }
+.practical-block-head a:hover, .practical-block-head a:focus-visible,
+.transport-dest a:hover, .transport-dest a:focus-visible,
+.transport-note a:hover, .transport-note a:focus-visible,
+.transport-tickets a:hover, .transport-tickets a:focus-visible,
+.utility-emergency-note a:hover, .utility-emergency-note a:focus-visible,
+.utility-price-note a:hover, .utility-price-note a:focus-visible,
+.utility-note a:hover, .utility-note a:focus-visible,
+.waste-card p a:hover, .waste-card p a:focus-visible,
+.contacts-pairs a:hover, .contacts-pairs a:focus-visible { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
 .practical-block-body { display: grid; gap: 20px; }
 
 /* Doprava – rozdělení podle typu dopravy */
@@ -177,7 +195,6 @@ h3 { font-size: 32px; letter-spacing: -0.04em; }
 .transport-stop-main strong { color: var(--ink); font-size: 15px; }
 .transport-dist { flex: 0 0 auto; color: var(--forest-soft); font-size: 12px; font-weight: 700; }
 .transport-dest { margin: 6px 0 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
-.transport-dest a { color: var(--forest); font-weight: 700; }
 .transport-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
 .transport-link { display: inline-block; margin-top: 10px; color: var(--forest); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; }
 .transport-link:hover { color: var(--forest-deep); }
@@ -188,7 +205,6 @@ h3 { font-size: 32px; letter-spacing: -0.04em; }
 .transport-distances strong { color: var(--ink); font-size: 15px; font-weight: 600; }
 .transport-distances span { flex: 0 0 auto; color: var(--forest-soft); font-size: 13px; font-weight: 700; }
 .transport-note { margin: 18px 0 0; padding: 12px 15px; border-left: 3px solid var(--forest); border-radius: 0 8px 8px 0; background: var(--cream); color: #41504a; font-size: 14px; line-height: 1.55; }
-.transport-note a { color: var(--forest); font-weight: 700; }
 .transport-image { margin: 20px 0 0; overflow: hidden; border-radius: 12px; }
 .transport-image img { display: block; width: 100%; height: auto; transition: transform 500ms ease, filter 500ms ease; }
 .transport-image a:hover img, .transport-image a:focus-visible img { transform: scale(1.04); filter: brightness(0.96); }
@@ -224,7 +240,6 @@ h3 { font-size: 32px; letter-spacing: -0.04em; }
 .utility-price { padding: 14px 16px; border-radius: 10px; background: var(--cream); }
 .utility-price-value { display: block; font-family: "Fraunces", Georgia, serif; font-size: 22px; color: var(--forest-deep); letter-spacing: -0.02em; }
 .utility-price-note { margin: 6px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
-.utility-price-note a { color: var(--forest); font-weight: 700; text-decoration: none; }
 .utility-note { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
 
 /* Úřady a důležité kontakty */
@@ -260,21 +275,18 @@ h3 { font-size: 32px; letter-spacing: -0.04em; }
 .contacts-pairs div { display: grid; gap: 3px; }
 .contacts-pairs dt { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--forest-soft); }
 .contacts-pairs dd { margin: 0; font-size: 14px; color: var(--muted); }
-.contacts-pairs a { color: var(--forest); font-weight: 700; text-decoration: none; }
-.contacts-specialists { margin-top: 20px; padding: 22px 24px; border: 1px solid var(--line); border-radius: 14px; background: var(--cream); }
-.contacts-specialists-label { margin: 0 0 16px; font-size: 13px; font-weight: 700; color: var(--forest-deep); }
-.contacts-specialists-label small { font-weight: 400; color: var(--muted); }
-.specialists-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
-.specialists-list li { display: grid; grid-template-columns: minmax(190px,.46fr) minmax(150px,.38fr) 1fr; gap: 12px; align-items: baseline; padding: 11px 0; border-top: 1px solid var(--line); }
-.specialist-role { font-size: 13px; font-weight: 700; color: var(--ink); }
-.specialist-name { font-size: 13px; color: var(--muted); }
-.specialist-contacts { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; }
-.specialist-contacts a { color: var(--forest); text-decoration: none; font-weight: 600; }
-.specialist-more { color: var(--forest-soft) !important; font-weight: 400 !important; }
-.contacts-orp { margin-top: 14px; padding: 20px 24px; border-radius: 14px; background: var(--cream); border: 1px solid var(--line); }
-.contacts-orp h3 { font-size: 18px; margin-bottom: 10px; }
-.contacts-orp p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
-.contacts-orp a { color: var(--forest); font-weight: 700; text-decoration: none; }
+.contacts-secondary-label { margin: 20px 0 14px; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--forest-soft); }
+.contacts-secondary-label small { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--muted); }
+.contacts-secondary-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+.contacts-secondary-card { display: flex; flex-direction: column; gap: 10px; padding: 20px 20px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--cream); }
+.contacts-secondary-card--orp { border-color: rgba(49,83,58,.22); background: rgba(247,243,233,.55); }
+.contacts-secondary-role { margin: 0; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--forest-soft); }
+.contacts-secondary-name { margin: 0; font-family: "Fraunces", Georgia, serif; font-size: 18px; letter-spacing: -.02em; color: var(--ink); }
+.contacts-secondary-address { margin: 0; font-size: 13px; color: var(--muted); }
+.contacts-secondary-links { display: flex; flex-direction: column; gap: 4px; }
+.contacts-secondary-links a { font-size: 13px; font-weight: 700; color: var(--forest); text-decoration: none; }
+.contacts-secondary-links a:hover { text-decoration: underline; }
+.contacts-secondary-more { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: auto; }
 
 /* Odpady – karty podle druhu odpadu */
 .waste-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 36px; }
@@ -478,7 +490,7 @@ dd { margin: 0; color: #425047; }
   .archive-callout, .practical-callout { grid-template-columns: 1fr; align-items: start; }
   .practical-block-inner { grid-template-columns: 1fr; gap: 22px; }
   .contacts-grid { grid-template-columns: 1fr; }
-  .specialists-list li { grid-template-columns: 1fr; gap: 4px; }
+  .contacts-secondary-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .transport-modes { grid-template-columns: 1fr; }
   .utility-grid { grid-template-columns: 1fr; }
   .waste-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

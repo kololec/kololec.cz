@@ -61,25 +61,25 @@ const waste = [
   {
     title: 'Směsný odpad',
     icon: iconTrash,
-    text: 'Popelnice se vyvážejí zpravidla 1× za 14 dní; přesný den a týden se řídí nálepkou na nádobě. Od roku 2026 se vyvážejí pouze nádoby s RFID čipem – o očipování požádejte na městském úřadě (Ing. Žalovič, 606 054 303).',
+    text: 'Popelnice se vyvážejí zpravidla 1× za 14 dní; přesný den a týden se řídí nálepkou na nádobě. Od roku 2026 se vyvážejí pouze nádoby s RFID čipem – o očipování požádejte na <a href="https://www.mesto-trebenice.cz/ing-jiri-zalovic" target="_blank" rel="noreferrer">městském úřadě</a> (Ing. Žalovič, <a href="tel:+420606054303">606 054 303</a>).',
     link: { label: 'Harmonogram svozu', href: 'https://www.mesto-trebenice.cz/trideny-odpad' },
   },
   {
     title: 'Tříděný odpad v obci',
     icon: iconSort,
     text: 'Kontejnery jsou v Kololeči u trafostanice: papír, barevné sklo, plasty a kovy. Plasty se svážejí přibližně každý týden, papír zhruba 1× za 14 dní, sklo a kovy zhruba 1× za 4 týdny.',
-    link: { label: 'Tříděný odpad', href: 'https://www.mesto-trebenice.cz/trideny-odpad' },
+    link: { label: 'Frekvence svozu', href: 'https://www.mesto-trebenice.cz/trideny-odpad' },
   },
   {
     title: 'Bioodpad',
     icon: iconLeaf,
-    text: 'Samostatné stanoviště na bioodpad v Kololeči není – větší množství (tráva, větve, listí) patří do sběrného dvora v Třebenicích. Spalování trávy a listí je zakázané.',
+    text: 'Samostatné stanoviště na bioodpad v Kololeči není – větší množství (tráva, větve, listí) patří do <a href="https://www.mesto-trebenice.cz/sberne-misto-bioodpadu" target="_blank" rel="noreferrer">sběrného dvora v Třebenicích</a>. Spalování trávy a listí je zakázané.',
     link: { label: 'Sběrný dvůr', href: 'https://www.mesto-trebenice.cz/sberne-misto-bioodpadu' },
   },
   {
     title: 'Objemný a nebezpečný odpad',
     icon: iconWarning,
-    text: 'Nábytek, dřevo, elektro, nebezpečný odpad i textil odevzdáte ve sběrném dvoře v Třebenicích. Město také občas pořádá mobilní svoz kusového odpadu – termíny hlásí úřední deska.',
+    text: 'Nábytek, dřevo, elektro, nebezpečný odpad i textil odevzdáte ve <a href="https://www.mesto-trebenice.cz/sberne-misto-bioodpadu" target="_blank" rel="noreferrer">sběrném dvoře v Třebenicích</a>. Město také občas pořádá mobilní svoz kusového odpadu – termíny hlásí <a href="https://www.mesto-trebenice.cz/uredni-deska" target="_blank" rel="noreferrer">úřední deska</a>.',
     link: { label: 'Sběrný dvůr', href: 'https://www.mesto-trebenice.cz/sberne-misto-bioodpadu' },
   },
   {
@@ -110,13 +110,13 @@ const utilities = {
   water: {
     provider: { name: 'Severočeské vodovody a kanalizace (SčVK)', url: 'https://www.scvk.cz/zakaznicky-servis/moje-obec/obec/?city_id=565768' },
     emergency: ['601 267 267', '840 111 111'],
-    emergencyNote: 'Call centrum – nonstop, dle tarifu operátora',
+    emergencyNote: 'Call centrum – nonstop, dle tarifu operátora. Nebo napište na <a href="https://www.scvk.cz/kontakty/" target="_blank" rel="noreferrer">kontaktní stránce SčVK</a>.',
     links: [
       { label: 'Havárie a odstávky (živý stav)', href: 'https://www.scvk.cz/zakaznicky-servis/moje-obec/obec/?city_id=565768' },
       { label: 'Registrace SMS/e-mail upozornění', href: 'https://portal.scvk.cz/smsinfo' },
     ],
     price: '156,59 Kč / m³ (vč. DPH, vodné + stočné, platnost od 1. 1. 2026)',
-    priceNote: 'Cena platí pro region SVS. Celková částka zahrnuje dodání i odvod 1 m³ vody; u nemovitostí bez napojení na kanalizaci se stočné neúčtuje.',
+    priceNote: 'Cena platí pro region SVS. Celková částka zahrnuje dodání i odvod 1 m³ vody; u nemovitostí bez napojení na kanalizaci se stočné neúčtuje. <a href="https://www.severoceskavoda.cz/vse-o-vode/" target="_blank" rel="noreferrer">Více o cenách →</a>',
     priceUrl: 'https://www.severoceskavoda.cz/vse-o-vode/',
   },
   electricity: {
@@ -135,10 +135,10 @@ const utilities = {
       { label: 'Nahlásit závadu (ÚŘAD v MOBILU)', href: 'https://mesto-trebenice.uradvmobilu.cz/default/issues' },
       { label: 'Kontakt na město', href: 'https://www.mesto-trebenice.cz/oficialni-kontakt' },
     ],
-    note: 'Závady veřejného osvětlení hlaste prostřednictvím aplikace ÚŘAD v MOBILU nebo na podatelně MÚ Třebenice (tel. 416 594 301, podatelna@mesto-trebenice.cz).',
+    note: 'Závady veřejného osvětlení hlaste prostřednictvím <a href="https://mesto-trebenice.uradvmobilu.cz/default/issues" target="_blank" rel="noreferrer">ÚŘAD v MOBILU</a> nebo na podatelně MěÚ Třebenice (tel. <a href="tel:+420416594301">416 594 301</a>, <a href="mailto:podatelna@mesto-trebenice.cz">podatelna@mesto-trebenice.cz</a>).',
   },
   wastewater: {
-    note: 'Způsob likvidace odpadních vod se může lišit podle konkrétní nemovitosti. Krajský Plán rozvoje vodovodů a kanalizací (PRVK) počítá s odváděním odpadních vod z bezodtokových jímek na ČOV Litoměřice.',
+    note: 'Způsob likvidace odpadních vod se může lišit podle konkrétní nemovitosti. <a href="https://prvk.kr-ustecky.cz/prvk/karty/nahled?id=582" target="_blank" rel="noreferrer">Krajský plán rozvoje vodovodů a kanalizací (PRVK)</a> počítá s odváděním odpadních vod z bezodtokových jímek na ČOV Litoměřice.',
     links: [
       { label: 'Karta PRVK – Kololeč', href: 'https://prvk.kr-ustecky.cz/prvk/karty/nahled?id=582' },
       { label: 'SčVK – voda v mé obci', href: 'https://www.scvk.cz/zakaznicky-servis/moje-obec/obec/?city_id=565768' },
@@ -381,7 +381,7 @@ const practicalSections = [
                         <span class="waste-icon" aria-hidden="true" set:html={card.icon}></span>
                         <h3>{card.title}</h3>
                       </div>
-                      <p>{card.text}</p>
+                      <p set:html={card.text}></p>
                       {card.link && (
                         <a class="waste-link" href={card.link.href} target="_blank" rel="noreferrer">{card.link.label} →</a>
                       )}
@@ -432,7 +432,7 @@ const practicalSections = [
                           <a href={`tel:${tel.replace(/ /g,'')}`} class="utility-phone">{tel}</a>
                         ))}
                       </div>
-                      <p class="utility-emergency-note">{utilities.water.emergencyNote}</p>
+                      <p class="utility-emergency-note" set:html={utilities.water.emergencyNote}></p>
                     </div>
                     <div class="utility-links">
                       {utilities.water.links.map((l) => (
@@ -441,7 +441,7 @@ const practicalSections = [
                     </div>
                     <div class="utility-price">
                       <span class="utility-price-value">{utilities.water.price}</span>
-                      <p class="utility-price-note">{utilities.water.priceNote} <a href={utilities.water.priceUrl} target="_blank" rel="noreferrer">Více o cenách →</a></p>
+                      <p class="utility-price-note" set:html={utilities.water.priceNote}></p>
                     </div>
                   </article>
 
@@ -460,7 +460,7 @@ const practicalSections = [
                           <a href={`tel:${tel.replace(/ /g,'')}`} class="utility-phone">{tel}</a>
                         ))}
                       </div>
-                      <p class="utility-emergency-note">{utilities.electricity.emergencyNote}</p>
+                      <p class="utility-emergency-note" set:html={utilities.electricity.emergencyNote}></p>
                     </div>
                     <div class="utility-links">
                       {utilities.electricity.links.map((l) => (
@@ -476,7 +476,7 @@ const practicalSections = [
                       </span>
                       <h3>Veřejné osvětlení</h3>
                     </div>
-                    <p class="utility-note">{utilities.lighting.note}</p>
+                    <p class="utility-note" set:html={utilities.lighting.note}></p>
                     <div class="utility-links">
                       {utilities.lighting.links.map((l) => (
                         <a href={l.href} target="_blank" rel="noreferrer" class="utility-link">{l.label} →</a>
@@ -491,7 +491,7 @@ const practicalSections = [
                       </span>
                       <h3>Odpadní vody</h3>
                     </div>
-                    <p class="utility-note">{utilities.wastewater.note}</p>
+                    <p class="utility-note" set:html={utilities.wastewater.note}></p>
                     <div class="utility-links">
                       {utilities.wastewater.links.map((l) => (
                         <a href={l.href} target="_blank" rel="noreferrer" class="utility-link">{l.label} →</a>
@@ -578,8 +578,7 @@ const practicalSections = [
                         </span>
                         <h3>Czech POINT</h3>
                       </div>
-                      <p class="utility-note">Výpisy z rejstříků (trestů, katastru, obchodního, živnostenského a dalších), ověřování podpisů a kopií, autorizovaná konverze, agenda datových schránek. Dostupné na podatelně MěÚ Třebenice.</p>
-                      <a href="https://www.mesto-trebenice.cz/podatelna-a-spisovna" target="_blank" rel="noreferrer" class="utility-link" style="margin-top: 12px; display: inline-block;">Podatelna a Czech POINT →</a>
+                      <p class="utility-note">Výpisy z rejstříků (trestů, katastru, obchodního, živnostenského a dalších), ověřování podpisů a kopií, autorizovaná konverze, agenda datových schránek. Dostupné na <a href="https://www.mesto-trebenice.cz/podatelna-a-spisovna" target="_blank" rel="noreferrer">podatelně MěÚ Třebenice</a>.</p>
                     </article>
 
                     {/* Hlášení závad */}
@@ -590,11 +589,7 @@ const practicalSections = [
                         </span>
                         <h3>Hlášení závad a odběr hlášení</h3>
                       </div>
-                      <p class="utility-note">Závady veřejného osvětlení, poškozený mobiliář, komunikace nebo jiný problém ve veřejném prostoru hlaste přes <strong>ÚŘAD v MOBILU</strong>. Stejnou aplikací se lze přihlásit k odběru SMS nebo e-mailových hlášení města.</p>
-                      <div class="utility-links" style="margin-top: 12px;">
-                        <a href="https://mesto-trebenice.uradvmobilu.cz/default/issues" target="_blank" rel="noreferrer" class="utility-link">Nahlásit závadu →</a>
-                        <a href="https://mesto-trebenice.uradvmobilu.cz/default/intro" target="_blank" rel="noreferrer" class="utility-link">Odběr hlášení města →</a>
-                      </div>
+                      <p class="utility-note">Závady veřejného osvětlení, poškozený mobiliář, komunikace nebo jiný problém ve veřejném prostoru hlaste přes <a href="https://mesto-trebenice.uradvmobilu.cz/default/issues" target="_blank" rel="noreferrer"><strong>ÚŘAD v MOBILU</strong></a>. Stejnou aplikací se lze přihlásit k <a href="https://mesto-trebenice.uradvmobilu.cz/default/intro" target="_blank" rel="noreferrer">odběru SMS nebo e-mailových hlášení města</a>.</p>
                     </article>
 
                     {/* Policie */}
@@ -617,33 +612,35 @@ const practicalSections = [
                   </div>
                 </div>
 
-                {/* Specializované kontakty */}
-                <div class="contacts-specialists">
-                  <p class="contacts-specialists-label">Specializované kontakty MěÚ <small>(ověřeno červen 2026)</small></p>
-                  <ul class="specialists-list">
-                    {specialists.map((s) => (
-                      <li>
-                        <span class="specialist-role">{s.role}</span>
-                        <span class="specialist-name">{s.name}</span>
-                        <span class="specialist-contacts">
-                          {s.phone && <a href={`tel:+420${s.phone.replace(/ /g,'')}`}>{s.phone}</a>}
-                          {s.mobile && <a href={`tel:+420${s.mobile.replace(/ /g,'')}`}>{s.mobile}</a>}
-                          <a href={`mailto:${s.email}`}>{s.email}</a>
-                          <a href={s.url} target="_blank" rel="noreferrer" class="specialist-more">Více →</a>
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {/* Specializované kontakty + MěÚ Lovosice */}
+                <p class="contacts-secondary-label">Specializované kontakty MěÚ <small>(ověřeno červen 2026)</small></p>
+                <div class="contacts-secondary-grid">
+                  {specialists.map((s) => (
+                    <article class="contacts-secondary-card">
+                      <p class="contacts-secondary-role">{s.role}</p>
+                      <p class="contacts-secondary-name">{s.name}</p>
+                      <div class="contacts-secondary-links">
+                        {s.phone && <a href={`tel:+420${s.phone.replace(/ /g,'')}`}>{s.phone}</a>}
+                        {s.mobile && <a href={`tel:+420${s.mobile.replace(/ /g,'')}`}>{s.mobile}</a>}
+                        <a href={`mailto:${s.email}`}>{s.email}</a>
+                      </div>
+                      <a href={s.url} target="_blank" rel="noreferrer" class="waste-link">Více →</a>
+                    </article>
+                  ))}
 
-                {/* MěÚ Lovosice */}
-                <div class="contacts-orp">
-                  <h3>MěÚ Lovosice — obec s rozšířenou působností</h3>
-                  <p>Pro agendy s rozšířenou působností (např. stavební úřad, registr vozidel) je příslušný <strong>Městský úřad Lovosice</strong>, Školní 407/2, 410 02 Lovosice. Tel.: <a href="tel:+420416571111">416 571 111</a>.</p>
-                  <div class="utility-links" style="margin-top: 10px;">
-                    <a href="https://www.meulovo.cz/podrobny-kontakt" target="_blank" rel="noreferrer" class="utility-link">Kontakt →</a>
-                    <a href="https://www.meulovo.cz/stavebni-urad-a-uzemni-planovani" target="_blank" rel="noreferrer" class="utility-link">Stavební úřad →</a>
-                  </div>
+                  <article class="contacts-secondary-card contacts-secondary-card--orp">
+                    <p class="contacts-secondary-role">Obec s rozšířenou působností</p>
+                    <p class="contacts-secondary-name">MěÚ Lovosice</p>
+                    <p class="contacts-secondary-address">Školní 407/2, 410 02 Lovosice</p>
+                    <div class="contacts-secondary-links">
+                      <a href="tel:+420416571111">416 571 111</a>
+                      <a href="mailto:podatelna@meulovo.cz">podatelna@meulovo.cz</a>
+                    </div>
+                    <div class="contacts-secondary-more">
+                      <a href="https://www.meulovo.cz/podrobny-kontakt" target="_blank" rel="noreferrer" class="waste-link">Kontakt →</a>
+                      <a href="https://www.meulovo.cz/stavebni-urad-a-uzemni-planovani" target="_blank" rel="noreferrer" class="waste-link">Stavební úřad →</a>
+                    </div>
+                  </article>
                 </div>
 
               </div>
