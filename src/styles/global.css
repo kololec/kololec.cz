@@ -324,7 +324,7 @@ dd { margin: 0; color: #425047; }
   h2 { font-size: clamp(39px, 14vw, 58px); }
   .hero-credit { right: 13px; bottom: 12px; left: 13px; }
   .section { padding: 78px 0; }
-  .intro-drawings { grid-template-columns: 1fr; gap: 18px; }
+  .intro-drawings { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .facts { padding: 0; }
   .facts-grid { width: 100%; grid-template-columns: 1fr 1fr; }
   .fact-card { min-height: 132px; padding: 20px 16px; }
